@@ -1,0 +1,28 @@
+package com.nlstn.jarvis.modules.command.commands.settings;
+
+import com.nlstn.jarvis.ModuleHandler;
+import com.nlstn.jarvis.logging.Logger;
+import com.nlstn.jarvis.modules.command.commands.Command;
+
+public class ChangeSettingCommand extends Command {
+
+	public ChangeSettingCommand() {
+		super("ChangeSettingCommand", new String[] { "settings.change" });
+	}
+
+	@Override
+	public void execute() {
+		if(!ModuleHandler.getSettingsModule().settingExists(args[0])) 
+			Logger.warn("No setting with key " + args[0] + " exists!");
+		else {
+			ModuleHandler.getSettingsModule().setSetting(args[0], args[1]);
+			Logger.info("Succesfully changed setting " + args[0] + " to " + args[1]);
+		}
+	}
+
+	@Override
+	public boolean validateArguments() {
+		return args.length == 2;
+	}
+
+}
