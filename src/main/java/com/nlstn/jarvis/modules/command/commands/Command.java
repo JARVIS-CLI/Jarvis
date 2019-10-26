@@ -3,7 +3,7 @@ package com.nlstn.jarvis.modules.command.commands;
 import java.util.Arrays;
 import java.util.List;
 
-import com.nlstn.jarvis.logging.Logger;
+import com.nlstn.jarvis.modules.logging.Logger;
 
 public abstract class Command implements Runnable {
 

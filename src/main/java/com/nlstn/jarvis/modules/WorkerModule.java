@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.nlstn.jarvis.ModuleHandler;
-import com.nlstn.jarvis.logging.Logger;
+import com.nlstn.jarvis.modules.logging.Logger;
 
 public class WorkerModule extends Module {
 
@@ -21,7 +21,7 @@ public class WorkerModule extends Module {
 
 	@Override
 	public void init() {
-		service = Executors.newFixedThreadPool(Integer.parseInt(ModuleHandler.getSettingsModule().getSetting("workerThreadPool")));
+		service = Executors.newFixedThreadPool(Integer.parseInt(ModuleHandler.getSettingsModule().getSetting("worker.threadPool")));
 	}
 
 	@Override

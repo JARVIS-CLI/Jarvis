@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
-import com.nlstn.jarvis.logging.Logger;
+import com.nlstn.jarvis.Jarvis;
 import com.nlstn.jarvis.modules.Module;
+import com.nlstn.jarvis.modules.logging.Logger;
 
 public class SettingsModule extends Module {
 
@@ -19,7 +20,7 @@ public class SettingsModule extends Module {
 	@Override
 	public void preInit() {
 		settings = new Settings();
-		settingsPath = System.getProperty("user.home") + "/Jarvis/settings.opt";
+		settingsPath = Jarvis.PATH + "/settings.opt";
 		File settingsFile = new File(settingsPath);
 		if(!settingsFile.canRead()) {
 			Logger.trace("Cannot read SettingsFile " + settingsPath);

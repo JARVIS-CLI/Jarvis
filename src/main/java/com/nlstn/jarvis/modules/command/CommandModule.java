@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nlstn.jarvis.ModuleHandler;
-import com.nlstn.jarvis.logging.Logger;
 import com.nlstn.jarvis.modules.Module;
 import com.nlstn.jarvis.modules.command.commands.Command;
-import com.nlstn.jarvis.modules.command.commands.jarvis.ChangeLogLevelCommand;
 import com.nlstn.jarvis.modules.command.commands.jarvis.ExitCommand;
+import com.nlstn.jarvis.modules.command.commands.logging.ChangeLogLevelCommand;
+import com.nlstn.jarvis.modules.command.commands.logging.GetLogFileCountCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.ChangeSettingCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.PrintSettingCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.ReloadSettingCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.ResetSettingCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.SaveSettingCommand;
+import com.nlstn.jarvis.modules.logging.Logger;
 
 public class CommandModule extends Module {
 
@@ -31,7 +32,9 @@ public class CommandModule extends Module {
 		commands = new ArrayList<Command>();
 
 		commands.add(new ExitCommand());
+		
 		commands.add(new ChangeLogLevelCommand());
+		commands.add(new GetLogFileCountCommand());
 
 		commands.add(new ChangeSettingCommand());
 		commands.add(new ResetSettingCommand());

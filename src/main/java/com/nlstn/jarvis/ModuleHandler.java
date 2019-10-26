@@ -1,21 +1,27 @@
 package com.nlstn.jarvis;
 
-import com.nlstn.jarvis.logging.Logger;
 import com.nlstn.jarvis.modules.WorkerModule;
 import com.nlstn.jarvis.modules.command.CommandModule;
+import com.nlstn.jarvis.modules.logging.Logger;
+import com.nlstn.jarvis.modules.logging.LoggingModule;
 import com.nlstn.jarvis.modules.settings.SettingsModule;
 
 public class ModuleHandler {
 
+	private static LoggingModule	loggingModule;
 	private static CommandModule	commandModule;
 	private static WorkerModule		workerModule;
 	private static SettingsModule	settingsModule;
 
 	static void init() {
 		Logger.info("Initializing modules");
+		loggingModule = new LoggingModule();
 		commandModule = new CommandModule();
 		workerModule = new WorkerModule();
 		settingsModule = new SettingsModule();
+
+		Logger.trace("Preinitializing Logging Module");
+		loggingModule.preInit();
 
 		Logger.trace("Preinitializing Worker Module");
 		workerModule.preInit();
@@ -26,6 +32,9 @@ public class ModuleHandler {
 		Logger.trace("Preinitializing Command Module");
 		commandModule.preInit();
 
+		Logger.trace("Initializing Logging Module");
+		commandModule.init();
+
 		Logger.trace("Initializing Worker Module");
 		workerModule.init();
 
@@ -34,6 +43,9 @@ public class ModuleHandler {
 
 		Logger.trace("Initializing Command Module");
 		commandModule.init();
+
+		Logger.trace("Postinitializing Logging Module");
+		loggingModule.postInit();
 
 		Logger.trace("Postinitializing Worker Module");
 		workerModule.postInit();
@@ -59,7 +71,14 @@ public class ModuleHandler {
 		Logger.trace("Shutting down Worker Module");
 		workerModule.shutdown();
 
+		Logger.trace("Shutting down Logging Module");
+		loggingModule.shutdown();
+
 		Logger.info("Finished shutting down modules");
+	}
+
+	public static LoggingModule getLoggingModule() {
+		return loggingModule;
 	}
 
 	public static CommandModule getCommandModule() {
@@ -69,7 +88,7 @@ public class ModuleHandler {
 	public static WorkerModule getWorkerModule() {
 		return workerModule;
 	}
-	
+
 	public static SettingsModule getSettingsModule() {
 		return settingsModule;
 	}

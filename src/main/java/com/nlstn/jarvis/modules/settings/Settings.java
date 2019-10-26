@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.nlstn.jarvis.logging.Logger;
+import com.nlstn.jarvis.modules.logging.Logger;
 
 public class Settings {
 
@@ -19,8 +19,8 @@ public class Settings {
 	public Settings() {
 		settings = new ArrayList<Setting>();
 
-		settings.add(new Setting("exitTimeout", null, "5000"));
-		settings.add(new Setting("workerThreadPool", null, "10"));
+		settings.add(new Setting("worker.threadPool", null, "10"));
+		settings.add(new Setting("logger.maxQueueSize", null, "200"));
 	}
 
 	public boolean settingExists(String key) {
