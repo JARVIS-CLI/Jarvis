@@ -8,7 +8,6 @@ import com.nlstn.jarvis.modules.Module;
 import com.nlstn.jarvis.modules.command.commands.Command;
 import com.nlstn.jarvis.modules.command.commands.jarvis.ExitCommand;
 import com.nlstn.jarvis.modules.command.commands.logging.ChangeLogLevelCommand;
-import com.nlstn.jarvis.modules.command.commands.logging.GetLogFileCountCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.ChangeSettingCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.PrintSettingCommand;
 import com.nlstn.jarvis.modules.command.commands.settings.ReloadSettingCommand;
@@ -34,7 +33,6 @@ public class CommandModule extends Module {
 		commands.add(new ExitCommand());
 		
 		commands.add(new ChangeLogLevelCommand());
-		commands.add(new GetLogFileCountCommand());
 
 		commands.add(new ChangeSettingCommand());
 		commands.add(new ResetSettingCommand());

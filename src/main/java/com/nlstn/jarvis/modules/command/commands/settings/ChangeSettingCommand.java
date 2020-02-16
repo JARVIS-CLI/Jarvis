@@ -13,7 +13,7 @@ public class ChangeSettingCommand extends Command {
 	@Override
 	public void execute() {
 		if(!ModuleHandler.getSettingsModule().settingExists(args[0])) 
-			Logger.warn("No setting with key " + args[0] + " exists!");
+			Logger.warning("No setting with key " + args[0] + " exists!");
 		else {
 			ModuleHandler.getSettingsModule().setSetting(args[0], args[1]);
 			Logger.info("Succesfully changed setting " + args[0] + " to " + args[1]);

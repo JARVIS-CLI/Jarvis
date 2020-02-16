@@ -30,7 +30,7 @@ public class CommandModuleImplementation implements Runnable {
 			commandMatch.ifPresent(command -> command.loadArguments(args));
 			commandMatch.ifPresent(this::executeCommand);
 			if(!commandMatch.isPresent())
-				Logger.warn("Command " + commandIdentifier + " not found!");
+				Logger.warning("Command " + commandIdentifier + " not found!");
 		}
 		Logger.trace("Exited CommandModuleImplementation Loop");
 		scanner.close();
