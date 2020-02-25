@@ -2,6 +2,9 @@ package com.nlstn.jarvis.modules.settings;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.nlstn.jarvis.Jarvis;
@@ -10,8 +13,8 @@ import com.nlstn.jarvis.modules.logging.Logger;
 
 public class SettingsModule extends Module {
 
-	private Settings	settings;
-	private String		settingsPath;
+	private Settings settings;
+	private String settingsPath;
 
 	public SettingsModule() {
 		super("SettingsModule");
@@ -22,13 +25,12 @@ public class SettingsModule extends Module {
 		settings = new Settings();
 		settingsPath = Jarvis.PATH + "/settings.opt";
 		File settingsFile = new File(settingsPath);
-		if(!settingsFile.canRead()) {
+		if (!settingsFile.canRead()) {
 			Logger.trace("Cannot read SettingsFile " + settingsPath);
 			try {
 				settingsFile.getParentFile().mkdirs();
 				settingsFile.createNewFile();
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				Logger.error("Failed to create settings file!", e);
 			}
 			// Set defaults
@@ -63,10 +65,14 @@ public class SettingsModule extends Module {
 
 	public String getSetting(String key) {
 		Optional<Setting> optSetting = settings.getSetting(key);
-		if(optSetting.isPresent())
+		if (optSetting.isPresent())
 			return optSetting.get().getValue();
 		else
 			return null;
+	}
+
+	public List<Setting> getSettings() {
+		return new ArrayList<Setting>(settings.settings);
 	}
 
 	public void setSetting(String key, String value) {

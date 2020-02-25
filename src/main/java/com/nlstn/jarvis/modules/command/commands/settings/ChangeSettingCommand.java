@@ -7,7 +7,7 @@ import com.nlstn.jarvis.modules.logging.Logger;
 public class ChangeSettingCommand extends Command {
 
 	public ChangeSettingCommand() {
-		super("ChangeSettingCommand", new String[] { "settings.change" });
+		super("ChangeSettingCommand", new String[] { "settings.change", "settings.set" });
 	}
 
 	@Override

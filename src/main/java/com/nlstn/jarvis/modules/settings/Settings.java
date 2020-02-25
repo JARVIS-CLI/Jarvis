@@ -14,13 +14,14 @@ import com.nlstn.jarvis.modules.logging.Logger;
 
 public class Settings {
 
-	private List<Setting> settings;
+	List<Setting> settings;
 
 	public Settings() {
 		settings = new ArrayList<Setting>();
 
 		settings.add(new Setting("worker.threadPool", null, "10"));
 		settings.add(new Setting("logger.maxQueueSize", null, "200"));
+		settings.add(new Setting("logger.level", null, "INFO"));
 	}
 
 	public boolean settingExists(String key) {

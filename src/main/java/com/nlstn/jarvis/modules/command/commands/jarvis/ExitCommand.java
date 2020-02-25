@@ -6,7 +6,7 @@ import com.nlstn.jarvis.modules.command.commands.Command;
 public class ExitCommand extends Command {
 
 	public ExitCommand() {
-		super("ExitCommand", new String[] { "jarvis.exit", "jarvis.shutdown", "jarvis.close" });
+		super("ExitCommand", new String[] { "jarvis.exit", "jarvis.shutdown", "jarvis.close", "jarvis.stop" });
 	}
 
 	@Override
