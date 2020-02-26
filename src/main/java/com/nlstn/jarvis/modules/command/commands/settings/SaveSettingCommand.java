@@ -1,13 +1,14 @@
 package com.nlstn.jarvis.modules.command.commands.settings;
 
 import com.nlstn.jarvis.ModuleHandler;
+import com.nlstn.jarvis.modules.command.CommandDomain;
 import com.nlstn.jarvis.modules.command.commands.Command;
 import com.nlstn.jarvis.modules.logging.Logger;
 
 public class SaveSettingCommand extends Command {
 
 	public SaveSettingCommand() {
-		super("SaveSettingCommand", new String[] { "settings.save" });
+		super("SaveSettingCommand", CommandDomain.SETTINGS, new String[] { "settings.save" });
 	}
 
 	@Override

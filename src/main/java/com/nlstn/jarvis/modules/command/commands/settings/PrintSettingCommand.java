@@ -3,6 +3,7 @@ package com.nlstn.jarvis.modules.command.commands.settings;
 import java.util.List;
 
 import com.nlstn.jarvis.ModuleHandler;
+import com.nlstn.jarvis.modules.command.CommandDomain;
 import com.nlstn.jarvis.modules.command.commands.Command;
 import com.nlstn.jarvis.modules.logging.Logger;
 import com.nlstn.jarvis.modules.settings.Setting;
@@ -10,13 +11,13 @@ import com.nlstn.jarvis.modules.settings.Setting;
 public class PrintSettingCommand extends Command {
 
 	public PrintSettingCommand() {
-		super("PrintSettingCommand", new String[] { "settings.print" });
+		super("PrintSettingCommand", CommandDomain.SETTINGS, new String[] { "settings.print" });
 	}
 
 	public void execute() {
 		if (args.length == 0 || args[0].equals("all")) {
 			List<Setting> settings = ModuleHandler.getSettingsModule().getSettings();
-			for(Setting setting : settings) {
+			for (Setting setting : settings) {
 				Logger.info("Setting " + setting.getKey() + " has value " + setting.getValue());
 			}
 		} else {

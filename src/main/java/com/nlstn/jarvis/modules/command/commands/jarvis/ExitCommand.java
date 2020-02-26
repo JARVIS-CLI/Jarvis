@@ -1,12 +1,14 @@
 package com.nlstn.jarvis.modules.command.commands.jarvis;
 
 import com.nlstn.jarvis.Jarvis;
+import com.nlstn.jarvis.modules.command.CommandDomain;
 import com.nlstn.jarvis.modules.command.commands.Command;
 
 public class ExitCommand extends Command {
 
 	public ExitCommand() {
-		super("ExitCommand", new String[] { "jarvis.exit", "jarvis.shutdown", "jarvis.close", "jarvis.stop" });
+		super("ExitCommand", CommandDomain.JARVIS,
+				new String[] { "jarvis.exit", "jarvis.shutdown", "jarvis.close", "jarvis.stop" });
 	}
 
 	@Override
