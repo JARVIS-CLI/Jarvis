@@ -2,11 +2,11 @@ package com.nlstn.jarvis.modules.logging;
 
 public class Logger {
 
-    private static Level currentLevel = Level.TRACE;
+    private static Level currentLevel = Level.INFO;
 
     public static void log(Level level, String message) {
-        if(level.getLevel() >= currentLevel.getLevel())
-        System.out.println("[" + level + "]: " + message);
+        if (level.getLevel() >= currentLevel.getLevel())
+            System.out.println("[" + level + "]: " + message);
     }
 
     public static void trace(String message) {
