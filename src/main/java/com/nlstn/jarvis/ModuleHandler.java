@@ -24,51 +24,51 @@ public class ModuleHandler {
 		jobModule = new JobModule();
 
 		// Preinit
-		Logger.trace("Preinitializing Logging Module");
+		Logger.debug("Preinitializing Logging Module");
 		loggingModule.preInit();
 
-		Logger.trace("Preinitializing Worker Module");
+		Logger.debug("Preinitializing Worker Module");
 		workerModule.preInit();
 
-		Logger.trace("Preinitializing Settings Module");
+		Logger.debug("Preinitializing Settings Module");
 		settingsModule.preInit();
 
-		Logger.trace("Preinitializing Command Module");
+		Logger.debug("Preinitializing Command Module");
 		commandModule.preInit();
 
-		Logger.trace("Preinitializing Job Module");
+		Logger.debug("Preinitializing Job Module");
 		jobModule.preInit();
 
 		// Init
-		Logger.trace("Initializing Logging Module");
+		Logger.debug("Initializing Logging Module");
 		commandModule.init();
 
-		Logger.trace("Initializing Worker Module");
+		Logger.debug("Initializing Worker Module");
 		workerModule.init();
 
-		Logger.trace("Initializing Settings Module");
+		Logger.debug("Initializing Settings Module");
 		settingsModule.init();
 
-		Logger.trace("Initializing Command Module");
+		Logger.debug("Initializing Command Module");
 		commandModule.init();
 
-		Logger.trace("Initializing Job Module");
+		Logger.debug("Initializing Job Module");
 		jobModule.init();
 
 		// PostInit
-		Logger.trace("Postinitializing Logging Module");
+		Logger.debug("Postinitializing Logging Module");
 		loggingModule.postInit();
 
-		Logger.trace("Postinitializing Worker Module");
+		Logger.debug("Postinitializing Worker Module");
 		workerModule.postInit();
 
-		Logger.trace("Postinitializing Settings Module");
+		Logger.debug("Postinitializing Settings Module");
 		settingsModule.postInit();
 
-		Logger.trace("Postinitializing Command Module");
+		Logger.debug("Postinitializing Command Module");
 		commandModule.postInit();
 
-		Logger.trace("Postinitializing Job Module");
+		Logger.debug("Postinitializing Job Module");
 		jobModule.postInit();
 
 		Logger.info("Finished initializing modules");
@@ -77,19 +77,19 @@ public class ModuleHandler {
 	static void shutdown() {
 		Logger.info("Shutting down modules");
 
-		Logger.trace("Shutting down Command Module");
+		Logger.debug("Shutting down Command Module");
 		commandModule.shutdown();
 
-		Logger.trace("Shutting down Job Module");
+		Logger.debug("Shutting down Job Module");
 		jobModule.shutdown();
 
-		Logger.trace("Shutting down Settings Module");
+		Logger.debug("Shutting down Settings Module");
 		settingsModule.shutdown();
 
-		Logger.trace("Shutting down Worker Module");
+		Logger.debug("Shutting down Worker Module");
 		workerModule.shutdown();
 
-		Logger.trace("Shutting down Logging Module");
+		Logger.debug("Shutting down Logging Module");
 		loggingModule.shutdown();
 
 		Logger.info("Finished shutting down modules");
