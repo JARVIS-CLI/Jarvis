@@ -2,24 +2,28 @@ package com.nlstn.jarvis;
 
 import com.nlstn.jarvis.modules.WorkerModule;
 import com.nlstn.jarvis.modules.command.CommandModule;
+import com.nlstn.jarvis.modules.job.JobModule;
 import com.nlstn.jarvis.modules.logging.Logger;
 import com.nlstn.jarvis.modules.logging.LoggingModule;
 import com.nlstn.jarvis.modules.settings.SettingsModule;
 
 public class ModuleHandler {
 
-	private static LoggingModule	loggingModule;
-	private static CommandModule	commandModule;
-	private static WorkerModule		workerModule;
-	private static SettingsModule	settingsModule;
+	private static LoggingModule loggingModule;
+	private static CommandModule commandModule;
+	private static WorkerModule workerModule;
+	private static SettingsModule settingsModule;
+	private static JobModule jobModule;
 
 	static void init() {
 		Logger.info("Initializing modules");
 		loggingModule = new LoggingModule();
+		settingsModule = new SettingsModule();
 		commandModule = new CommandModule();
 		workerModule = new WorkerModule();
-		settingsModule = new SettingsModule();
+		jobModule = new JobModule();
 
+		// Preinit
 		Logger.trace("Preinitializing Logging Module");
 		loggingModule.preInit();
 
@@ -32,6 +36,10 @@ public class ModuleHandler {
 		Logger.trace("Preinitializing Command Module");
 		commandModule.preInit();
 
+		Logger.trace("Preinitializing Job Module");
+		jobModule.preInit();
+
+		// Init
 		Logger.trace("Initializing Logging Module");
 		commandModule.init();
 
@@ -44,6 +52,10 @@ public class ModuleHandler {
 		Logger.trace("Initializing Command Module");
 		commandModule.init();
 
+		Logger.trace("Initializing Job Module");
+		jobModule.init();
+
+		// PostInit
 		Logger.trace("Postinitializing Logging Module");
 		loggingModule.postInit();
 
@@ -56,6 +68,9 @@ public class ModuleHandler {
 		Logger.trace("Postinitializing Command Module");
 		commandModule.postInit();
 
+		Logger.trace("Postinitializing Job Module");
+		jobModule.postInit();
+
 		Logger.info("Finished initializing modules");
 	}
 
@@ -64,6 +79,9 @@ public class ModuleHandler {
 
 		Logger.trace("Shutting down Command Module");
 		commandModule.shutdown();
+
+		Logger.trace("Shutting down Job Module");
+		jobModule.shutdown();
 
 		Logger.trace("Shutting down Settings Module");
 		settingsModule.shutdown();
