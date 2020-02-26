@@ -30,7 +30,7 @@ public class CommandModuleImplementation implements Runnable {
 
 			Optional<Command> commandMatch = Optional.empty();
 			if (commandIdentifier.contains(".")) {
-				String[] commandIdentifierSplit = commandIdentifier.split(".");
+				String[] commandIdentifierSplit = commandIdentifier.split("\\.");
 				if (commandIdentifierSplit.length != 2) {
 					Logger.warning("Invalid command format! Multiple domains found");
 					continue;
