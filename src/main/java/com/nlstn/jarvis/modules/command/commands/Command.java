@@ -3,16 +3,19 @@ package com.nlstn.jarvis.modules.command.commands;
 import java.util.Arrays;
 import java.util.List;
 
+import com.nlstn.jarvis.modules.command.CommandDomain;
 import com.nlstn.jarvis.modules.logging.Logger;
 
 public abstract class Command implements Runnable {
 
 	private String			name;
+	private CommandDomain   domain;
 	private List<String>	commands;
 	protected String[]		args;
 
-	public Command(String name, String[] commands) {
+	public Command(String name, CommandDomain domain, String[] commands) {
 		this.name = name;
+		this.domain = domain;
 		this.commands = Arrays.asList(commands);
 	}
 
@@ -38,6 +41,10 @@ public abstract class Command implements Runnable {
 
 	public String getName() {
 		return name;
+	}
+
+	public CommandDomain getDomain() {
+		return domain;
 	}
 
 	public String[] getCommands() {
