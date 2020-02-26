@@ -8,8 +8,7 @@ import com.nlstn.jarvis.modules.logging.Logger;
 public class ChangeLogLevelCommand extends Command {
 
     public ChangeLogLevelCommand() {
-        super("ChangeLogLevelCommand", CommandDomain.SETTINGS,
-                new String[] { "logger.setLevel", "logger.changeLevel" });
+        super("ChangeLogLevelCommand", CommandDomain.SETTINGS, new String[] { "setLevel", "changeLevel" });
     }
 
     @Override

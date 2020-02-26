@@ -8,7 +8,7 @@ import com.nlstn.jarvis.modules.logging.Logger;
 public class ReloadSettingCommand extends Command {
 
 	public ReloadSettingCommand() {
-		super("ReloadSettingCommand", CommandDomain.SETTINGS, new String[] { "settings.reload" });
+		super("ReloadSettingCommand", CommandDomain.SETTINGS, new String[] { "reload" });
 	}
 
 	@Override

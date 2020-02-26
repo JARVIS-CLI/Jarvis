@@ -8,7 +8,7 @@ import com.nlstn.jarvis.modules.logging.Logger;
 public class ResetSettingCommand extends Command {
 
 	public ResetSettingCommand() {
-		super("ResetSettingCommand", CommandDomain.SETTINGS, new String[] { "settings.reset" });
+		super("ResetSettingCommand", CommandDomain.SETTINGS, new String[] { "reset" });
 	}
 
 	@Override

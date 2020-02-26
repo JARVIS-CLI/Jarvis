@@ -11,7 +11,7 @@ import com.nlstn.jarvis.modules.settings.Setting;
 public class PrintSettingCommand extends Command {
 
 	public PrintSettingCommand() {
-		super("PrintSettingCommand", CommandDomain.SETTINGS, new String[] { "settings.print" });
+		super("PrintSettingCommand", CommandDomain.SETTINGS, new String[] { "print" });
 	}
 
 	public void execute() {

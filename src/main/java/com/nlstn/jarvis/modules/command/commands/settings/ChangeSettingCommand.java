@@ -8,12 +8,12 @@ import com.nlstn.jarvis.modules.logging.Logger;
 public class ChangeSettingCommand extends Command {
 
 	public ChangeSettingCommand() {
-		super("ChangeSettingCommand", CommandDomain.SETTINGS, new String[] { "settings.change", "settings.set" });
+		super("ChangeSettingCommand", CommandDomain.SETTINGS, new String[] { "change", "set" });
 	}
 
 	@Override
 	public void execute() {
-		if(!ModuleHandler.getSettingsModule().settingExists(args[0])) 
+		if (!ModuleHandler.getSettingsModule().settingExists(args[0]))
 			Logger.warning("No setting with key " + args[0] + " exists!");
 		else {
 			ModuleHandler.getSettingsModule().setSetting(args[0], args[1]);
