@@ -1,8 +1,8 @@
 package com.nlstn.jarvis.modules.command.commands.settings;
 
 import com.nlstn.jarvis.ModuleHandler;
+import com.nlstn.jarvis.modules.command.Command;
 import com.nlstn.jarvis.modules.command.CommandDomain;
-import com.nlstn.jarvis.modules.command.commands.Command;
 import com.nlstn.jarvis.modules.logging.Logger;
 
 public class ReloadSettingCommand extends Command {

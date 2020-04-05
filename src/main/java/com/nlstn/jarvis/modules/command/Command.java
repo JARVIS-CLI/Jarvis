@@ -1,17 +1,16 @@
-package com.nlstn.jarvis.modules.command.commands;
+package com.nlstn.jarvis.modules.command;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.nlstn.jarvis.modules.command.CommandDomain;
 import com.nlstn.jarvis.modules.logging.Logger;
 
 public abstract class Command implements Runnable {
 
-	private String			name;
-	private CommandDomain   domain;
-	private List<String>	commands;
-	protected String[]		args;
+	private String name;
+	private CommandDomain domain;
+	private List<String> commands;
+	protected String[] args;
 
 	public Command(String name, CommandDomain domain, String[] commands) {
 		this.name = name;
@@ -20,7 +19,7 @@ public abstract class Command implements Runnable {
 	}
 
 	public final void run() {
-		if(!validateArguments())
+		if (!validateArguments())
 			Logger.info("Invalid arguments for command " + name);
 		else
 			execute();

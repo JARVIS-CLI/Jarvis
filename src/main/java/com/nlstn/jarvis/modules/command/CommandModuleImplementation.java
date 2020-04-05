@@ -6,17 +6,11 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import com.nlstn.jarvis.ModuleHandler;
-import com.nlstn.jarvis.modules.command.commands.Command;
 import com.nlstn.jarvis.modules.logging.Logger;
 
 public class CommandModuleImplementation implements Runnable {
 
-	private List<Command> commands;
 	private volatile boolean running = true;
-
-	public CommandModuleImplementation(List<Command> commands) {
-		this.commands = commands;
-	}
 
 	public void run() {
 
@@ -36,12 +30,12 @@ public class CommandModuleImplementation implements Runnable {
 					continue;
 				}
 				CommandDomain domain = CommandDomain.getByString(commandIdentifierSplit[0]);
-				commandMatch = commands.stream().filter(
+				commandMatch = CommandLoader.getCommands().stream().filter(
 						command -> command.getDomain() == domain && command.hasIdentifier(commandIdentifierSplit[1]))
 						.findAny();
 			} else {
-				List<Object> matchingCommands = Arrays.asList(
-						commands.stream().filter(command -> command.hasIdentifier(commandIdentifier)).toArray());
+				List<Object> matchingCommands = Arrays.asList(CommandLoader.getCommands().stream()
+						.filter(command -> command.hasIdentifier(commandIdentifier)).toArray());
 				if (matchingCommands.size() == 0) {
 					Logger.warning("Command " + commandIdentifier + " not found");
 				} else if (matchingCommands.size() == 1) {

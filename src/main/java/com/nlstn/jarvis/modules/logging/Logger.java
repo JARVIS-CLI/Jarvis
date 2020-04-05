@@ -31,7 +31,7 @@ public class Logger {
 
     public static void error(String message, Exception e) {
         log(Level.ERROR, message);
-        log(Level.ERROR, e.getMessage());
+        log(Level.ERROR, e.getLocalizedMessage());
     }
 
     public static void setLogLevel(Level level) {

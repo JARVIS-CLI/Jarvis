@@ -3,8 +3,8 @@ package com.nlstn.jarvis.modules.command.commands.settings;
 import java.util.List;
 
 import com.nlstn.jarvis.ModuleHandler;
+import com.nlstn.jarvis.modules.command.Command;
 import com.nlstn.jarvis.modules.command.CommandDomain;
-import com.nlstn.jarvis.modules.command.commands.Command;
 import com.nlstn.jarvis.modules.logging.Logger;
 import com.nlstn.jarvis.modules.settings.Setting;
 
