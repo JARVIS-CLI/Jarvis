@@ -111,4 +111,8 @@ public class ModuleHandler {
 		return settingsModule;
 	}
 
+	public static JobModule getJobModule() {
+		return jobModule;
+	}
+
 }
