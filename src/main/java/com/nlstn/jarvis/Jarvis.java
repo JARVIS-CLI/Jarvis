@@ -1,7 +1,8 @@
 package com.nlstn.jarvis;
 
-import com.nlstn.jarvis.modules.logging.Level;
-import com.nlstn.jarvis.modules.logging.Logger;
+import com.nlstn.jarvis.module.ModuleHandler;
+import com.nlstn.jarvis.module.modules.logging.Level;
+import com.nlstn.jarvis.module.modules.logging.Logger;
 
 /**
  * Main Class<br>
@@ -15,18 +16,17 @@ public class Jarvis {
 	/**
 	 * The current version of {@code Jarvis}
 	 */
-	public static final String	VERSION	= "0.0.1";
+	public static final String VERSION = "0.0.1";
 
 	/**
 	 * The Jarvis home directory, e.g. {@code C:/Users/firstname.lastname/Jarvis}
 	 */
-	public static final String	PATH	= System.getProperty("user.home") + "/Jarvis";
+	public static final String PATH = System.getProperty("user.home") + "/Jarvis";
 
 	/**
 	 * Main entry point
 	 * 
-	 * @param args
-	 *            currently unused
+	 * @param args currently unused
 	 */
 	public static void main(String[] args) {
 		Logger.log(Level.INFO, "Starting Jarvis v" + VERSION);
