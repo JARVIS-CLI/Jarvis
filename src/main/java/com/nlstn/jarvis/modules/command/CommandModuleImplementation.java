@@ -27,19 +27,14 @@ public class CommandModuleImplementation implements Runnable {
 				continue;
 			String[] split = input.split(" ");
 
-			Optional<Command> command = getCommand(split);
+			Optional<Command> commandOpt = getCommand(split);
 
-			command.ifPresent(this::executeCommand);
-			if (!command.isPresent())
+			commandOpt.ifPresent(command -> ModuleHandler.getWorkerModule().submitRunnable(command));
+			if (!commandOpt.isPresent())
 				Logger.warning("Command " + split[0] + " not found!");
 		}
 		Logger.trace("Exited CommandModuleImplementation Loop");
 		scanner.close();
-	}
-
-	void executeCommand(Command command) {
-		Command instance = command.getInstance();
-		ModuleHandler.getWorkerModule().submitRunnable(instance);
 	}
 
 	public Optional<Command> getCommand(String[] input) {
@@ -75,8 +70,7 @@ public class CommandModuleImplementation implements Runnable {
 			}
 		}
 		commandMatch.ifPresent(command -> command.loadArguments(args));
-		Command foundCommand = commandMatch.get().getInstance();
-		return Optional.of(foundCommand);
+		return commandMatch;
 	}
 
 	public void shutdown() {

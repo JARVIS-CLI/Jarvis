@@ -1,11 +1,15 @@
 package com.nlstn.jarvis.modules.command.commands;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import com.nlstn.jarvis.modules.command.CommandDomain;
-import com.nlstn.jarvis.modules.job.Job;
-import com.nlstn.jarvis.modules.job.JobStatus;
+import com.nlstn.jarvis.modules.command.events.CommandEvent;
+import com.nlstn.jarvis.modules.command.events.CommandEventHandler;
+import com.nlstn.jarvis.modules.command.events.CommandFailedEvent;
+import com.nlstn.jarvis.modules.command.events.CommandFinishedEvent;
+import com.nlstn.jarvis.modules.command.events.CommandStartedEvent;
 import com.nlstn.jarvis.modules.logging.Logger;
 
 public abstract class Command implements Runnable, Cloneable {
@@ -14,43 +18,26 @@ public abstract class Command implements Runnable, Cloneable {
 	private CommandDomain domain;
 	private List<String> commands;
 	protected String[] args;
-	private Job job;
-	private boolean isInstance;
+
+	private List<CommandEventHandler> eventHandlers;
 
 	public Command(String name, CommandDomain domain, String[] commands) {
 		this.name = name;
 		this.domain = domain;
 		this.commands = Arrays.asList(commands);
-		isInstance = false;
+		eventHandlers = new ArrayList<CommandEventHandler>();
 	}
 
 	public final void run() {
-		if (!isInstance) {
-			Logger.error("Tried to run non-instance Command!");
-			return;
-		}
 		if (!validateArguments()) {
-			if (job != null)
-				job.setStatus(JobStatus.FAILED);
+			raiseEvent(new CommandFailedEvent(this, "Invalid Arguments"));
 			Logger.info("Invalid arguments for command " + name);
 		} else {
+			raiseEvent(new CommandStartedEvent(this));
 			execute();
-			if (job != null)
-				job.setStatus(JobStatus.FINISHED);
+			raiseEvent(new CommandFinishedEvent(this));
 		}
 		args = null;
-	}
-
-	public Command getInstance() {
-		Command result = null;
-		try {
-			result = (Command) this.clone();
-		} catch (CloneNotSupportedException e) {
-			Logger.error("Creating an instance of this command failed!", e);
-			return null;
-		}
-		result.isInstance = true;
-		return result;
 	}
 
 	public abstract void execute();
@@ -75,6 +62,15 @@ public abstract class Command implements Runnable, Cloneable {
 
 	public String[] getCommands() {
 		return (String[]) commands.toArray();
+	}
+
+	public void raiseEvent(CommandEvent e) {
+		for (CommandEventHandler handler : eventHandlers)
+			handler.handleEvent(e);
+	}
+
+	public void addEventHandler(CommandEventHandler handler) {
+		eventHandlers.add(handler);
 	}
 
 }
