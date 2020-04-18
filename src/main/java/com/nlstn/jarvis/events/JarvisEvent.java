@@ -1,4 +1,4 @@
-package com.nlstn.jarvis;
+package com.nlstn.jarvis.events;
 
 public abstract class JarvisEvent {
 

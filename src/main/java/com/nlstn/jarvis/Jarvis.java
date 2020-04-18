@@ -1,5 +1,11 @@
 package com.nlstn.jarvis;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nlstn.jarvis.events.JarvisEvent;
+import com.nlstn.jarvis.events.JarvisEventHandler;
+import com.nlstn.jarvis.events.JarvisShutdownEvent;
 import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.logging.Level;
 import com.nlstn.jarvis.module.modules.logging.Logger;
@@ -23,6 +29,8 @@ public class Jarvis {
 	 */
 	public static final String PATH = System.getProperty("user.home") + "/Jarvis";
 
+	private static List<JarvisEventHandler> eventHandlers;
+
 	/**
 	 * Main entry point
 	 * 
@@ -30,13 +38,24 @@ public class Jarvis {
 	 */
 	public static void main(String[] args) {
 		Logger.log(Level.INFO, "Starting Jarvis v" + VERSION);
+		eventHandlers = new ArrayList<JarvisEventHandler>();
 		ModuleHandler.init();
+	}
+
+	public static void addEventHandler(JarvisEventHandler handler) {
+		eventHandlers.add(handler);
+	}
+
+	private static void raiseEvent(JarvisEvent e) {
+		for (JarvisEventHandler handler : eventHandlers)
+			handler.handleEvent(e);
 	}
 
 	/**
 	 * Shut's down jarvis and all modules
 	 */
 	public static void shutdown() {
+		raiseEvent(new JarvisShutdownEvent());
 		ModuleHandler.shutdown();
 		System.exit(0);
 	}

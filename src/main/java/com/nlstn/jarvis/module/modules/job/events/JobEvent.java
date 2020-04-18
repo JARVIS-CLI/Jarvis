@@ -1,6 +1,6 @@
 package com.nlstn.jarvis.module.modules.job.events;
 
-import com.nlstn.jarvis.JarvisEvent;
+import com.nlstn.jarvis.events.JarvisEvent;
 import com.nlstn.jarvis.module.modules.job.Job;
 
 public abstract class JobEvent extends JarvisEvent {

@@ -25,6 +25,7 @@ public abstract class Module {
 
 	void shutdownInt() {
 		raiseEvent(new ModuleShutdownEvent());
+		shutdown();
 	}
 
 	public abstract void shutdown();

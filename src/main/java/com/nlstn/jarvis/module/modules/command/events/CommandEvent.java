@@ -1,6 +1,6 @@
 package com.nlstn.jarvis.module.modules.command.events;
 
-import com.nlstn.jarvis.JarvisEvent;
+import com.nlstn.jarvis.events.JarvisEvent;
 import com.nlstn.jarvis.module.modules.command.commands.Command;
 
 public abstract class CommandEvent extends JarvisEvent {
