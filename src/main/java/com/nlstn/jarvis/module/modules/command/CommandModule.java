@@ -7,6 +7,7 @@ import java.util.Optional;
 import com.nlstn.jarvis.module.Module;
 import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.command.commands.Command;
+import com.nlstn.jarvis.module.modules.command.commands.PrintHistoryCommand;
 import com.nlstn.jarvis.module.modules.command.commands.jarvis.ExitCommand;
 import com.nlstn.jarvis.module.modules.command.commands.jobs.BackgroundCommand;
 import com.nlstn.jarvis.module.modules.command.commands.logging.ChangeLogLevelCommand;
@@ -33,6 +34,7 @@ public class CommandModule extends Module {
 		commands = new ArrayList<Command>();
 
 		commands.add(new ExitCommand());
+		commands.add(new PrintHistoryCommand());
 
 		commands.add(new ChangeLogLevelCommand());
 
@@ -59,6 +61,10 @@ public class CommandModule extends Module {
 
 	public Optional<Command> getCommand(String[] input) {
 		return implementation.getCommand(input);
+	}
+
+	public List<Command> getCommandHistory() {
+		return implementation.getCommandHistory();
 	}
 
 	@Override

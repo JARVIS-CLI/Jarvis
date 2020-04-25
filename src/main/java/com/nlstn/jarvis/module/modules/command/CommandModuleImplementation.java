@@ -1,5 +1,6 @@
 package com.nlstn.jarvis.module.modules.command;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -12,10 +13,12 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 public class CommandModuleImplementation implements Runnable {
 
 	private List<Command> commands;
+	private List<Command> recentCommands;
 	private volatile boolean running = true;
 
 	public CommandModuleImplementation(List<Command> commands) {
 		this.commands = commands;
+		recentCommands = new ArrayList<Command>();
 	}
 
 	public void run() {
@@ -30,6 +33,7 @@ public class CommandModuleImplementation implements Runnable {
 			Optional<Command> commandOpt = getCommand(split);
 
 			commandOpt.ifPresent(command -> ModuleHandler.getWorkerModule().submitRunnable(command));
+			commandOpt.ifPresent(command -> recentCommands.add(command));
 			if (!commandOpt.isPresent())
 				Logger.warning("Command " + split[0] + " not found!");
 		}
@@ -71,6 +75,10 @@ public class CommandModuleImplementation implements Runnable {
 		}
 		commandMatch.ifPresent(command -> command.loadArguments(args));
 		return commandMatch;
+	}
+
+	public List<Command> getCommandHistory() {
+		return recentCommands;
 	}
 
 	public void shutdown() {
