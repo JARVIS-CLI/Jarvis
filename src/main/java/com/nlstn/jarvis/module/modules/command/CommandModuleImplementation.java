@@ -12,6 +12,8 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 
 public class CommandModuleImplementation implements Runnable {
 
+	private static String STATISTICS_KEY_EXECUTE = "CommandModule.EXECUTE_COMMAND";
+
 	private List<Command> commands;
 	private List<Command> recentCommands;
 	private volatile boolean running = true;
@@ -34,6 +36,7 @@ public class CommandModuleImplementation implements Runnable {
 
 			commandOpt.ifPresent(command -> ModuleHandler.getWorkerModule().submitRunnable(command));
 			commandOpt.ifPresent(command -> recentCommands.add(command));
+			ModuleHandler.getStatisticsModule().addRecord(STATISTICS_KEY_EXECUTE);
 			if (!commandOpt.isPresent())
 				Logger.warning("Command " + split[0] + " not found!");
 		}

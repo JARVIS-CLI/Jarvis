@@ -9,6 +9,8 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 
 public class WorkerModule extends Module {
 
+	private static final String STATISTICS_KEY_SUBMIT = "WorkerModule.STATISTICS_KEY_SUBMIT";
+
 	private ExecutorService service;
 
 	public WorkerModule() {
@@ -38,8 +40,11 @@ public class WorkerModule extends Module {
 
 	public void submitRunnable(Runnable r) {
 		Logger.trace("Submitted new Runnable");
-		if (service == null)
+		if (service == null) {
 			Logger.error("Worker Module has not been initialized yet!");
+			return;
+		}
+		ModuleHandler.getStatisticsModule().addRecord(STATISTICS_KEY_SUBMIT);
 		service.execute(r);
 	}
 
