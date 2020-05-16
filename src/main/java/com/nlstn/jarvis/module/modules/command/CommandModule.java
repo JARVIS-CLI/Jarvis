@@ -16,6 +16,7 @@ import com.nlstn.jarvis.module.modules.command.commands.settings.PrintSettingCom
 import com.nlstn.jarvis.module.modules.command.commands.settings.ReloadSettingCommand;
 import com.nlstn.jarvis.module.modules.command.commands.settings.ResetSettingCommand;
 import com.nlstn.jarvis.module.modules.command.commands.settings.SaveSettingCommand;
+import com.nlstn.jarvis.module.modules.command.commands.statistics.PrintStatisticCommand;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
 public class CommandModule extends Module {
@@ -45,6 +46,8 @@ public class CommandModule extends Module {
 		commands.add(new SaveSettingCommand());
 
 		commands.add(new BackgroundCommand());
+
+		commands.add(new PrintStatisticCommand());
 
 		Logger.trace("Finished loading commands");
 	}

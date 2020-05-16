@@ -61,9 +61,17 @@ public class StatisticsModule extends Module {
     }
 
     public void addRecord(String name) {
-        int value = (int) properties.get(name);
+        Object property = properties.get(name);
+        int value = 0;
+        if (property != null) {
+            value = Integer.parseInt((String) property);
+        }
         value++;
         properties.setProperty(name, String.valueOf(value));
+    }
+
+    public int getStatisticsValue(String name) {
+        return Integer.parseInt((String) properties.get(name));
     }
 
 }
