@@ -27,7 +27,7 @@ public class Jarvis {
 	/**
 	 * The Jarvis home directory, e.g. {@code C:/Users/firstname.lastname/Jarvis}
 	 */
-	public static final String PATH = System.getProperty("user.home") + "/Jarvis";
+	public static final String PATH = System.getProperty("user.home") + "/.jarvis";
 
 	private static List<JarvisEventHandler> eventHandlers;
 

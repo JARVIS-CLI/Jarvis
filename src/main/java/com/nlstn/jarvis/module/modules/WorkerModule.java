@@ -9,7 +9,7 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 
 public class WorkerModule extends Module {
 
-	private static final String STATISTICS_KEY_SUBMIT = "WorkerModule.STATISTICS_KEY_SUBMIT";
+	private static final String STATISTICS_KEY_SUBMIT = "WorkerModule.SUBMIT_RUNNABLE";
 
 	private ExecutorService service;
 
