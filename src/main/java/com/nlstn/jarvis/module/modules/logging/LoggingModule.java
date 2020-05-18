@@ -22,9 +22,4 @@ public class LoggingModule extends Module {
     public void postInit() {
 
     }
-
-    @Override
-    public void shutdown() {
-
-    }
 }

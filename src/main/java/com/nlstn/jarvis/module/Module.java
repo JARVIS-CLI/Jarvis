@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.nlstn.jarvis.module.events.ModuleEvent;
 import com.nlstn.jarvis.module.events.ModuleEventHandler;
-import com.nlstn.jarvis.module.events.ModuleShutdownEvent;
 
 public abstract class Module {
 
@@ -22,13 +21,6 @@ public abstract class Module {
 	public abstract void init();
 
 	public abstract void postInit();
-
-	void shutdownInt() {
-		raiseEvent(new ModuleShutdownEvent());
-		shutdown();
-	}
-
-	public abstract void shutdown();
 
 	public String getName() {
 		return name;

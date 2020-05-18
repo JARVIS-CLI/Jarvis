@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.nlstn.jarvis.Jarvis;
+import com.nlstn.jarvis.events.JarvisShutdownEvent;
 import com.nlstn.jarvis.module.Module;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
@@ -41,17 +42,15 @@ public class SettingsModule extends Module {
 
 	@Override
 	public void init() {
-
+		Jarvis.addEventHandler((e) -> {
+			if (e instanceof JarvisShutdownEvent)
+				save();
+		});
 	}
 
 	@Override
 	public void postInit() {
 
-	}
-
-	@Override
-	public void shutdown() {
-		save();
 	}
 
 	public boolean settingExists(String key) {

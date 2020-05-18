@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.nlstn.jarvis.Jarvis;
 import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.commands.commands.PrintCommandsCommand;
 import com.nlstn.jarvis.commands.commands.PrintHistoryCommand;
@@ -16,6 +17,7 @@ import com.nlstn.jarvis.commands.settings.ReloadSettingCommand;
 import com.nlstn.jarvis.commands.settings.ResetSettingCommand;
 import com.nlstn.jarvis.commands.settings.SaveSettingCommand;
 import com.nlstn.jarvis.commands.statistics.PrintStatisticCommand;
+import com.nlstn.jarvis.events.JarvisShutdownEvent;
 import com.nlstn.jarvis.module.Module;
 import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.logging.Logger;
@@ -57,6 +59,10 @@ public class CommandModule extends Module {
 	@Override
 	public void init() {
 		implementation = new CommandModuleImplementation(commands);
+		Jarvis.addEventHandler((e) -> {
+			if (e instanceof JarvisShutdownEvent)
+				implementation.shutdown();
+		});
 	}
 
 	@Override
@@ -74,11 +80,6 @@ public class CommandModule extends Module {
 
 	public List<Command> getCommandHistory() {
 		return implementation.getCommandHistory();
-	}
-
-	@Override
-	public void shutdown() {
-		implementation.shutdown();
 	}
 
 }

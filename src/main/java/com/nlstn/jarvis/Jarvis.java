@@ -56,7 +56,6 @@ public class Jarvis {
 	 */
 	public static void shutdown() {
 		raiseEvent(new JarvisShutdownEvent());
-		ModuleHandler.shutdown();
 		System.exit(0);
 	}
 

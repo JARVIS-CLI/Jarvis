@@ -86,30 +86,6 @@ public class ModuleHandler {
 		Logger.info("Finished initializing modules");
 	}
 
-	public static void shutdown() {
-		Logger.info("Shutting down modules");
-
-		Logger.debug("Shutting down Command Module");
-		commandModule.shutdown();
-
-		Logger.debug("Shutting down Job Module");
-		jobModule.shutdown();
-
-		Logger.debug("Shutting down Settings Module");
-		settingsModule.shutdown();
-
-		Logger.debug("Shutting down Worker Module");
-		workerModule.shutdown();
-
-		Logger.debug("Shutting down Logging Module");
-		loggingModule.shutdown();
-
-		Logger.debug("Shutting down Statistics Module");
-		statisticsModule.shutdown();
-
-		Logger.info("Finished shutting down modules");
-	}
-
 	public static LoggingModule getLoggingModule() {
 		return loggingModule;
 	}

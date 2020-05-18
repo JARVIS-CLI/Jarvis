@@ -3,6 +3,8 @@ package com.nlstn.jarvis.module.modules;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.nlstn.jarvis.Jarvis;
+import com.nlstn.jarvis.events.JarvisShutdownEvent;
 import com.nlstn.jarvis.module.Module;
 import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.logging.Logger;
@@ -26,16 +28,15 @@ public class WorkerModule extends Module {
 	public void init() {
 		service = Executors.newFixedThreadPool(
 				Integer.parseInt(ModuleHandler.getSettingsModule().getSetting("worker.threadPool")));
+		Jarvis.addEventHandler((e) -> {
+			if (e instanceof JarvisShutdownEvent)
+				service.shutdown();
+		});
 	}
 
 	@Override
 	public void postInit() {
 
-	}
-
-	@Override
-	public void shutdown() {
-		service.shutdown();
 	}
 
 	public void submitRunnable(Runnable r) {
