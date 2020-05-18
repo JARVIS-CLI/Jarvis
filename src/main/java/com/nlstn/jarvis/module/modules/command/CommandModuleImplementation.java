@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.ModuleHandler;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
 public class CommandModuleImplementation implements Runnable {

@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.nlstn.jarvis.commands.Command;
+import com.nlstn.jarvis.commands.commands.PrintCommandsCommand;
+import com.nlstn.jarvis.commands.commands.PrintHistoryCommand;
+import com.nlstn.jarvis.commands.jarvis.ExitCommand;
+import com.nlstn.jarvis.commands.jobs.BackgroundCommand;
+import com.nlstn.jarvis.commands.logging.ChangeLogLevelCommand;
+import com.nlstn.jarvis.commands.settings.ChangeSettingCommand;
+import com.nlstn.jarvis.commands.settings.PrintSettingCommand;
+import com.nlstn.jarvis.commands.settings.ReloadSettingCommand;
+import com.nlstn.jarvis.commands.settings.ResetSettingCommand;
+import com.nlstn.jarvis.commands.settings.SaveSettingCommand;
+import com.nlstn.jarvis.commands.statistics.PrintStatisticCommand;
 import com.nlstn.jarvis.module.Module;
 import com.nlstn.jarvis.module.ModuleHandler;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
-import com.nlstn.jarvis.module.modules.command.commands.PrintHistoryCommand;
-import com.nlstn.jarvis.module.modules.command.commands.jarvis.ExitCommand;
-import com.nlstn.jarvis.module.modules.command.commands.jobs.BackgroundCommand;
-import com.nlstn.jarvis.module.modules.command.commands.logging.ChangeLogLevelCommand;
-import com.nlstn.jarvis.module.modules.command.commands.settings.ChangeSettingCommand;
-import com.nlstn.jarvis.module.modules.command.commands.settings.PrintSettingCommand;
-import com.nlstn.jarvis.module.modules.command.commands.settings.ReloadSettingCommand;
-import com.nlstn.jarvis.module.modules.command.commands.settings.ResetSettingCommand;
-import com.nlstn.jarvis.module.modules.command.commands.settings.SaveSettingCommand;
-import com.nlstn.jarvis.module.modules.command.commands.statistics.PrintStatisticCommand;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
 public class CommandModule extends Module {
@@ -48,6 +49,7 @@ public class CommandModule extends Module {
 		commands.add(new BackgroundCommand());
 
 		commands.add(new PrintStatisticCommand());
+		commands.add(new PrintCommandsCommand());
 
 		Logger.trace("Finished loading commands");
 	}
@@ -62,6 +64,10 @@ public class CommandModule extends Module {
 		ModuleHandler.getWorkerModule().submitRunnable(implementation);
 	}
 
+	public List<Command> getLoadedCommands() {
+		return commands;
+	}
+
 	public Optional<Command> getCommand(String[] input) {
 		return implementation.getCommand(input);
 	}
@@ -73,7 +79,6 @@ public class CommandModule extends Module {
 	@Override
 	public void shutdown() {
 		implementation.shutdown();
-
 	}
 
 }

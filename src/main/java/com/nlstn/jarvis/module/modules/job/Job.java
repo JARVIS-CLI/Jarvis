@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.ModuleHandler;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 import com.nlstn.jarvis.module.modules.command.events.CommandEvent;
 import com.nlstn.jarvis.module.modules.command.events.CommandEventHandler;
 import com.nlstn.jarvis.module.modules.command.events.CommandFailedEvent;

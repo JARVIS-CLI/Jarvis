@@ -1,10 +1,10 @@
-package com.nlstn.jarvis.module.modules.command.commands.jobs;
+package com.nlstn.jarvis.commands.jobs;
 
 import java.util.Optional;
 
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 
 public class BackgroundCommand extends Command {
 

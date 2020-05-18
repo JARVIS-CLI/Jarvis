@@ -1,8 +1,8 @@
-package com.nlstn.jarvis.module.modules.command.commands.jarvis;
+package com.nlstn.jarvis.commands.jarvis;
 
 import com.nlstn.jarvis.Jarvis;
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 
 public class ExitCommand extends Command {
 

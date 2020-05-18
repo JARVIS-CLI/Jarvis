@@ -1,10 +1,10 @@
-package com.nlstn.jarvis.module.modules.command.commands.settings;
+package com.nlstn.jarvis.commands.settings;
 
 import java.util.List;
 
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 import com.nlstn.jarvis.module.modules.settings.Setting;
 

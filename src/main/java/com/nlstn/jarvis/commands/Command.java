@@ -1,4 +1,4 @@
-package com.nlstn.jarvis.module.modules.command.commands;
+package com.nlstn.jarvis.commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,6 +71,10 @@ public abstract class Command implements Runnable, Cloneable {
 
 	public void addEventHandler(CommandEventHandler handler) {
 		eventHandlers.add(handler);
+	}
+
+	public String toString() {
+		return getName();
 	}
 
 }

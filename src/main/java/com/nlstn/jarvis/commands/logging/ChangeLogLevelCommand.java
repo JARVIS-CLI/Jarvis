@@ -1,7 +1,7 @@
-package com.nlstn.jarvis.module.modules.command.commands.logging;
+package com.nlstn.jarvis.commands.logging;
 
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 import com.nlstn.jarvis.module.modules.logging.Level;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 

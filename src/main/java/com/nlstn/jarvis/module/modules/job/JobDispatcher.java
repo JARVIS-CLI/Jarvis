@@ -3,8 +3,8 @@ package com.nlstn.jarvis.module.modules.job;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.ModuleHandler;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 import com.nlstn.jarvis.module.modules.job.events.JobEvent;
 import com.nlstn.jarvis.module.modules.job.events.JobEventHandler;
 import com.nlstn.jarvis.module.modules.job.events.JobFailedEvent;

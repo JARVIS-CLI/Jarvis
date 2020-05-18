@@ -1,8 +1,8 @@
 package com.nlstn.jarvis.module.modules.job;
 
+import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.Module;
 import com.nlstn.jarvis.module.ModuleHandler;
-import com.nlstn.jarvis.module.modules.command.commands.Command;
 
 public class JobModule extends Module {
 
