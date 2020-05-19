@@ -17,7 +17,7 @@ public class SettingsModule extends Module {
 	private String settingsPath;
 
 	public SettingsModule() {
-		super("SettingsModule");
+		super();
 	}
 
 	@Override

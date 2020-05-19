@@ -11,8 +11,8 @@ public abstract class Module {
 	private String name;
 	private List<ModuleEventHandler> eventHandlers;
 
-	public Module(String name) {
-		this.name = name;
+	public Module() {
+		name = this.getClass().getSimpleName();
 		this.eventHandlers = new ArrayList<ModuleEventHandler>();
 	}
 

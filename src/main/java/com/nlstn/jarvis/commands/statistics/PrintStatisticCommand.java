@@ -8,8 +8,7 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 public class PrintStatisticCommand extends Command {
 
     public PrintStatisticCommand() {
-        super("PrintStatisticsCommand", CommandDomain.STATISTICS,
-                new String[] { "print", "printStatistic", "printStat" });
+        super(CommandDomain.STATISTICS, new String[] { "print", "printStatistic", "printStat" });
     }
 
     @Override

@@ -29,7 +29,7 @@ public class CommandModule extends Module {
 	private List<Command> commands;
 
 	public CommandModule() {
-		super("CommandModule");
+		super();
 	}
 
 	@Override

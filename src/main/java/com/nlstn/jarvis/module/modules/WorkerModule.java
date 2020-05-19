@@ -16,7 +16,7 @@ public class WorkerModule extends Module {
 	private ExecutorService service;
 
 	public WorkerModule() {
-		super("WorkerModule");
+		super();
 	}
 
 	@Override

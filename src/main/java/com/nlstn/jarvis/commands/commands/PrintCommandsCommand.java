@@ -10,7 +10,7 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 public class PrintCommandsCommand extends Command {
 
     public PrintCommandsCommand() {
-        super("PrintCommandsCommand", CommandDomain.COMMANDS, new String[] { "print", "printCommands" });
+        super(CommandDomain.COMMANDS, new String[] { "print", "printCommands", "listCommands" });
     }
 
     public void execute() {

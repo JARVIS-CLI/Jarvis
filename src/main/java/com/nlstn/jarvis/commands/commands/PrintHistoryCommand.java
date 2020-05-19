@@ -10,7 +10,7 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 public class PrintHistoryCommand extends Command {
 
     public PrintHistoryCommand() {
-        super("PrintHistoryCommand", CommandDomain.COMMANDS, new String[] { "history" });
+        super(CommandDomain.COMMANDS, new String[] { "history" });
     }
 
     @Override

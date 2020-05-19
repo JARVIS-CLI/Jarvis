@@ -9,7 +9,7 @@ import com.nlstn.jarvis.module.modules.command.CommandDomain;
 public class BackgroundCommand extends Command {
 
     public BackgroundCommand() {
-        super("BackgroundCommand", CommandDomain.JOBS, new String[] { "background", "bg", "job" });
+        super(CommandDomain.JOBS, new String[] { "background", "bg", "job" });
     }
 
     @Override

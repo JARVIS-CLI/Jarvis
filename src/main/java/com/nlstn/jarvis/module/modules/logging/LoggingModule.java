@@ -5,7 +5,7 @@ import com.nlstn.jarvis.module.Module;
 public class LoggingModule extends Module {
 
     public LoggingModule() {
-        super("LoggingModule");
+        super();
     }
 
     @Override

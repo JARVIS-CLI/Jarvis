@@ -11,7 +11,7 @@ public class JobModule extends Module {
     private JobDispatcher dispatcher;
 
     public JobModule() {
-        super("JobModule");
+        super();
     }
 
     public void preInit() {

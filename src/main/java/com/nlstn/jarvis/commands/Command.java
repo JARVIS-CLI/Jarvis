@@ -21,8 +21,8 @@ public abstract class Command implements Runnable, Cloneable {
 
 	private List<CommandEventHandler> eventHandlers;
 
-	public Command(String name, CommandDomain domain, String[] commands) {
-		this.name = name;
+	public Command(CommandDomain domain, String[] commands) {
+		name = this.getClass().getSimpleName();
 		this.domain = domain;
 		this.commands = Arrays.asList(commands);
 		eventHandlers = new ArrayList<CommandEventHandler>();

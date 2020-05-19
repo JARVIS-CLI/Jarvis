@@ -8,7 +8,7 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 public class SaveSettingCommand extends Command {
 
 	public SaveSettingCommand() {
-		super("SaveSettingCommand", CommandDomain.SETTINGS, new String[] { "save" });
+		super(CommandDomain.SETTINGS, new String[] { "save" });
 	}
 
 	@Override

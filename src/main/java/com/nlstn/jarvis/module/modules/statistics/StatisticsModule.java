@@ -19,7 +19,7 @@ public class StatisticsModule extends Module {
     private Properties properties;
 
     public StatisticsModule() {
-        super("StatisticsModule");
+        super();
     }
 
     @Override
