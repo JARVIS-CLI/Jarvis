@@ -20,7 +20,7 @@ import com.nlstn.jarvis.module.modules.logging.Logger;
 public class Jarvis {
 
 	/**
-	 * The current version of {@code Jarvis}
+	 * The current version of {@code Jarvis} cli
 	 */
 	public static final String VERSION = "0.0.1";
 
