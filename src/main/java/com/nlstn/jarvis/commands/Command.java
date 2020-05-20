@@ -1,5 +1,7 @@
 package com.nlstn.jarvis.commands;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +19,9 @@ public abstract class Command implements Runnable, Cloneable {
 	private String name;
 	private CommandDomain domain;
 	private List<String> commands;
+
+	private String shortDescription;
+
 	protected String[] args;
 
 	private List<CommandEventHandler> eventHandlers;
@@ -25,6 +30,7 @@ public abstract class Command implements Runnable, Cloneable {
 		name = this.getClass().getSimpleName();
 		this.domain = domain;
 		this.commands = Arrays.asList(commands);
+		loadCommandInfoFile();
 		eventHandlers = new ArrayList<CommandEventHandler>();
 	}
 
@@ -64,6 +70,10 @@ public abstract class Command implements Runnable, Cloneable {
 		return (String[]) commands.toArray();
 	}
 
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
 	public void raiseEvent(CommandEvent e) {
 		for (CommandEventHandler handler : eventHandlers)
 			handler.handleEvent(e);
@@ -74,7 +84,16 @@ public abstract class Command implements Runnable, Cloneable {
 	}
 
 	public String toString() {
-		return getName();
+		return getName() + " - " + getShortDescription();
 	}
 
+	private void loadCommandInfoFile() {
+		String path = "/commandInfoFiles/" + getName() + ".cif";
+		try (BufferedReader reader = new BufferedReader(
+				new InputStreamReader(Command.class.getResourceAsStream(path)))) {
+			shortDescription = reader.readLine();
+		} catch (Exception e) {
+			Logger.error("Failed to load CommandInfoFile " + path, e);
+		}
+	}
 }

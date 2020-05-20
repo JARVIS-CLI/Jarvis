@@ -1,0 +1,1 @@
+Print all/specific settings with their values

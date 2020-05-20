@@ -15,7 +15,7 @@ import com.nlstn.jarvis.commands.settings.ChangeSettingCommand;
 import com.nlstn.jarvis.commands.settings.PrintSettingCommand;
 import com.nlstn.jarvis.commands.settings.ReloadSettingCommand;
 import com.nlstn.jarvis.commands.settings.ResetSettingCommand;
-import com.nlstn.jarvis.commands.settings.SaveSettingCommand;
+import com.nlstn.jarvis.commands.settings.SaveSettingsCommand;
 import com.nlstn.jarvis.commands.statistics.PrintStatisticCommand;
 import com.nlstn.jarvis.events.JarvisShutdownEvent;
 import com.nlstn.jarvis.module.Module;
@@ -46,7 +46,7 @@ public class CommandModule extends Module {
 		commands.add(new ResetSettingCommand());
 		commands.add(new PrintSettingCommand());
 		commands.add(new ReloadSettingCommand());
-		commands.add(new SaveSettingCommand());
+		commands.add(new SaveSettingsCommand());
 
 		commands.add(new BackgroundCommand());
 

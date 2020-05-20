@@ -5,15 +5,15 @@ import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
-public class SaveSettingCommand extends Command {
+public class SaveSettingsCommand extends Command {
 
-	public SaveSettingCommand() {
+	public SaveSettingsCommand() {
 		super(CommandDomain.SETTINGS, new String[] { "save" });
 	}
 
 	@Override
 	public void execute() {
-		Logger.info("Saving setting");
+		Logger.info("Saving settings");
 		ModuleHandler.getSettingsModule().save();
 	}
 
