@@ -7,6 +7,9 @@ import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
+/**
+ * The {@code PrintCommandsCommand} prints all available commands.
+ */
 public class PrintCommandsCommand extends Command {
 
     public PrintCommandsCommand() {

@@ -7,6 +7,10 @@ import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
+/**
+ * The {@code PrintHistoryCommand} prints the last used commands. It has no
+ * arguments
+ */
 public class PrintHistoryCommand extends Command {
 
     public PrintHistoryCommand() {

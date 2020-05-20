@@ -8,7 +8,7 @@ import com.nlstn.jarvis.Jarvis;
 import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.commands.commands.PrintCommandsCommand;
 import com.nlstn.jarvis.commands.commands.PrintHistoryCommand;
-import com.nlstn.jarvis.commands.jarvis.ExitCommand;
+import com.nlstn.jarvis.commands.jarvis.ShutdownCommand;
 import com.nlstn.jarvis.commands.jobs.BackgroundCommand;
 import com.nlstn.jarvis.commands.logging.ChangeLogLevelCommand;
 import com.nlstn.jarvis.commands.settings.ChangeSettingCommand;
@@ -37,7 +37,7 @@ public class CommandModule extends Module {
 		Logger.trace("Loading commands");
 		commands = new ArrayList<Command>();
 
-		commands.add(new ExitCommand());
+		commands.add(new ShutdownCommand());
 		commands.add(new PrintHistoryCommand());
 
 		commands.add(new ChangeLogLevelCommand());

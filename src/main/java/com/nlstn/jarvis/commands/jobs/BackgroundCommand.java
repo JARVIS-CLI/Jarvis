@@ -6,6 +6,9 @@ import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.ModuleHandler;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
 
+/**
+ * The {@code BackgroundCommand} is used to execute a command in the background.
+ */
 public class BackgroundCommand extends Command {
 
     public BackgroundCommand() {

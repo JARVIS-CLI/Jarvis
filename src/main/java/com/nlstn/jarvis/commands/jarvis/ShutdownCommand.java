@@ -4,9 +4,12 @@ import com.nlstn.jarvis.Jarvis;
 import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.modules.command.CommandDomain;
 
-public class ExitCommand extends Command {
+/**
+ * The {@code ShutdownCommand} shuts down Jarvis
+ */
+public class ShutdownCommand extends Command {
 
-	public ExitCommand() {
+	public ShutdownCommand() {
 		super(CommandDomain.JARVIS, new String[] { "exit", "shutdown", "close", "stop" });
 	}
 

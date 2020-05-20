@@ -5,6 +5,7 @@ import com.nlstn.jarvis.module.modules.command.CommandModule;
 import com.nlstn.jarvis.module.modules.job.JobModule;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 import com.nlstn.jarvis.module.modules.logging.LoggingModule;
+import com.nlstn.jarvis.module.modules.media.MediaModule;
 import com.nlstn.jarvis.module.modules.settings.SettingsModule;
 import com.nlstn.jarvis.module.modules.statistics.StatisticsModule;
 
@@ -16,6 +17,7 @@ public class ModuleHandler {
 	private static SettingsModule settingsModule;
 	private static JobModule jobModule;
 	private static StatisticsModule statisticsModule;
+	private static MediaModule mediaModule;
 
 	public static void init() {
 		Logger.info("Initializing modules");
@@ -25,6 +27,7 @@ public class ModuleHandler {
 		workerModule = new WorkerModule();
 		jobModule = new JobModule();
 		statisticsModule = new StatisticsModule();
+		mediaModule = new MediaModule();
 
 		// Preinit
 		Logger.debug("Preinitializing Statistics Module");
@@ -45,6 +48,9 @@ public class ModuleHandler {
 		Logger.debug("Preinitializing Job Module");
 		jobModule.preInit();
 
+		Logger.debug("Preinitializing Media Module");
+		mediaModule.preInit();
+
 		// Init
 		Logger.debug("Initializing Statistics Module");
 		statisticsModule.init();
@@ -64,6 +70,9 @@ public class ModuleHandler {
 		Logger.debug("Initializing Job Module");
 		jobModule.init();
 
+		Logger.debug("Initializing Media Module");
+		mediaModule.init();
+
 		// PostInit
 		Logger.debug("Postinitializing Statistics Module");
 		statisticsModule.postInit();
@@ -82,6 +91,9 @@ public class ModuleHandler {
 
 		Logger.debug("Postinitializing Job Module");
 		jobModule.postInit();
+
+		Logger.debug("Postinitializing Media Module");
+		mediaModule.postInit();
 
 		Logger.info("Finished initializing modules");
 	}
@@ -108,6 +120,10 @@ public class ModuleHandler {
 
 	public static JobModule getJobModule() {
 		return jobModule;
+	}
+
+	public static MediaModule getMediaModule() {
+		return mediaModule;
 	}
 
 }

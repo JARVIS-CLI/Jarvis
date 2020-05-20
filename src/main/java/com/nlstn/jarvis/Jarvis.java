@@ -42,10 +42,21 @@ public class Jarvis {
 		ModuleHandler.init();
 	}
 
+	/**
+	 * Register a {@code JarvisEventHandler} to listen to the raised events
+	 * 
+	 * @param handler The event handler to register
+	 */
 	public static void addEventHandler(JarvisEventHandler handler) {
 		eventHandlers.add(handler);
 	}
 
+	/**
+	 * This method is used to dispatch a {@code JarvisEvent} to the registered event
+	 * handlers.
+	 * 
+	 * @param e The event to raise
+	 */
 	private static void raiseEvent(JarvisEvent e) {
 		for (JarvisEventHandler handler : eventHandlers)
 			handler.handleEvent(e);

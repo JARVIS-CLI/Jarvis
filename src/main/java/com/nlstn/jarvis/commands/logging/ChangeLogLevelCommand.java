@@ -5,6 +5,10 @@ import com.nlstn.jarvis.module.modules.command.CommandDomain;
 import com.nlstn.jarvis.module.modules.logging.Level;
 import com.nlstn.jarvis.module.modules.logging.Logger;
 
+/**
+ * The {@code ChangeLogLevelCommand} is used to change the log level of the
+ * global logger
+ */
 public class ChangeLogLevelCommand extends Command {
 
     public ChangeLogLevelCommand() {
