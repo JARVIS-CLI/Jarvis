@@ -1,6 +1,7 @@
 package com.nlstn.jarvis.commands.commands;
 
 import java.util.List;
+import java.util.ListIterator;
 
 import com.nlstn.jarvis.commands.Command;
 import com.nlstn.jarvis.module.ModuleHandler;
@@ -20,9 +21,10 @@ public class PrintHistoryCommand extends Command {
     @Override
     public void execute() {
         List<Command> recentCommands = ModuleHandler.getCommandModule().getCommandHistory();
-        for (Command command : recentCommands) {
-            Logger.info(command.getName());
-        }
+        ListIterator<Command> iterator = recentCommands.listIterator(recentCommands.size());
+
+        while (iterator.hasPrevious())
+            Logger.info(iterator.previous().getName());
     }
 
     @Override

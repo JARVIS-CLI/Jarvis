@@ -22,6 +22,7 @@ public class Settings {
 		settings.add(new Setting("worker.threadPool", null, "10"));
 		settings.add(new Setting("logger.maxQueueSize", null, "200"));
 		settings.add(new Setting("logger.level", null, "INFO"));
+		settings.add(new Setting("commands.maxRecentCommandsSize", null, "10"));
 	}
 
 	public boolean settingExists(String key) {

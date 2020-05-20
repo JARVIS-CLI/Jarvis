@@ -35,7 +35,7 @@ public class CommandModuleImplementation implements Runnable {
 			Optional<Command> commandOpt = getCommand(split);
 
 			commandOpt.ifPresent(command -> ModuleHandler.getWorkerModule().submitRunnable(command));
-			commandOpt.ifPresent(command -> recentCommands.add(command));
+			commandOpt.ifPresent(command -> addToRecentCommands(command));
 			ModuleHandler.getStatisticsModule().addRecord(STATISTICS_KEY_EXECUTE);
 			if (!commandOpt.isPresent())
 				Logger.warning("Command " + split[0] + " not found!");
@@ -78,6 +78,13 @@ public class CommandModuleImplementation implements Runnable {
 		}
 		commandMatch.ifPresent(command -> command.loadArguments(args));
 		return commandMatch;
+	}
+
+	private void addToRecentCommands(Command command) {
+		recentCommands.add(command);
+		int maxSize = Integer.parseInt(ModuleHandler.getSettingsModule().getSetting("commands.maxRecentCommandsSize"));
+		if (recentCommands.size() >= maxSize)
+			recentCommands.remove(0);
 	}
 
 	public List<Command> getCommandHistory() {
