@@ -9,7 +9,7 @@ import com.nlstn.jarvis.module.modules.media.MediaModule;
 import com.nlstn.jarvis.module.modules.settings.SettingsModule;
 import com.nlstn.jarvis.module.modules.statistics.StatisticsModule;
 
-public class ModuleHandler {
+public final class ModuleHandler {
 
 	private static LoggingModule loggingModule;
 	private static CommandModule commandModule;
@@ -18,6 +18,9 @@ public class ModuleHandler {
 	private static JobModule jobModule;
 	private static StatisticsModule statisticsModule;
 	private static MediaModule mediaModule;
+
+	private ModuleHandler() {
+	}
 
 	public static void init() {
 		Logger.info("Initializing modules");
