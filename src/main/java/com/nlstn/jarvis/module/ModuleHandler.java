@@ -1,6 +1,5 @@
 package com.nlstn.jarvis.module;
 
-import com.nlstn.jarvis.module.modules.WorkerModule;
 import com.nlstn.jarvis.module.modules.command.CommandModule;
 import com.nlstn.jarvis.module.modules.job.JobModule;
 import com.nlstn.jarvis.module.modules.logging.Logger;
@@ -8,6 +7,7 @@ import com.nlstn.jarvis.module.modules.logging.LoggingModule;
 import com.nlstn.jarvis.module.modules.media.MediaModule;
 import com.nlstn.jarvis.module.modules.settings.SettingsModule;
 import com.nlstn.jarvis.module.modules.statistics.StatisticsModule;
+import com.nlstn.jarvis.module.modules.worker.WorkerModule;
 
 public final class ModuleHandler {
 

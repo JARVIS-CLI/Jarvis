@@ -5,7 +5,7 @@ import com.nlstn.jarvis.commands.Command;
 public class CommandStartedEvent extends CommandEvent {
 
     public CommandStartedEvent(Command command) {
-        super("CommandStartedEvent", command);
+        super(command);
     }
 
 }

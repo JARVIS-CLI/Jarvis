@@ -4,8 +4,8 @@ public abstract class JarvisEvent {
 
     private String name;
 
-    public JarvisEvent(String name) {
-        this.name = name;
+    public JarvisEvent() {
+        this.name = this.getClass().getSimpleName();
     }
 
     public String getName() {

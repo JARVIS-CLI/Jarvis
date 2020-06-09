@@ -7,8 +7,7 @@ public abstract class JobEvent extends JarvisEvent {
 
     private Job job;
 
-    public JobEvent(String name, Job job) {
-        super(name);
+    public JobEvent(Job job) {
         this.job = job;
     }
 

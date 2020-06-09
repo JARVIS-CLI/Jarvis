@@ -7,7 +7,7 @@ public class CommandFailedEvent extends CommandEvent {
     private String message;
 
     public CommandFailedEvent(Command command, String message) {
-        super("CommandFailedEvent", command);
+        super(command);
         this.message = message;
     }
 

@@ -7,8 +7,7 @@ public abstract class CommandEvent extends JarvisEvent {
 
     private Command command;
 
-    public CommandEvent(String name, Command command) {
-        super(name);
+    public CommandEvent(Command command) {
         this.command = command;
     }
 

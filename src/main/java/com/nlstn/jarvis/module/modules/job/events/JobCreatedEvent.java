@@ -5,7 +5,7 @@ import com.nlstn.jarvis.module.modules.job.Job;
 public class JobCreatedEvent extends JobEvent {
 
     public JobCreatedEvent(Job job) {
-        super("JobCreatedEvent", job);
+        super(job);
     }
 
 }

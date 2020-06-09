@@ -1,4 +1,4 @@
-package com.nlstn.jarvis.module.modules;
+package com.nlstn.jarvis.module.modules.worker;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -39,14 +39,19 @@ public class WorkerModule extends Module {
 
 	}
 
-	public void submitRunnable(Runnable r) {
+	public void submitWorker(Worker worker) {
 		Logger.trace("Submitted new Runnable");
 		if (service == null) {
 			Logger.error("Worker Module has not been initialized yet!");
 			return;
 		}
 		ModuleHandler.getStatisticsModule().addRecord(STATISTICS_KEY_SUBMIT);
-		service.execute(r);
+		service.execute(worker);
+	}
+
+	public void submitRunnable(Runnable r) {
+		Worker worker = new Worker(r);
+		submitWorker(worker);
 	}
 
 }
