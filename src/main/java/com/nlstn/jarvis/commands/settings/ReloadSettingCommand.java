@@ -14,10 +14,10 @@ public class ReloadSettingCommand extends Command {
 	@Override
 	public void execute() {
 		if (args.length == 0) {
-			Logger.info("Reloading all settings from file");
+			Logger.getRootLogger().info("Reloading all settings from file");
 			ModuleHandler.getSettingsModule().reload();
 		} else {
-			Logger.info("Reloading setting " + args[0] + " from file");
+			Logger.getRootLogger().info("Reloading setting " + args[0] + " from file");
 			ModuleHandler.getSettingsModule().reload(args[0]);
 		}
 	}

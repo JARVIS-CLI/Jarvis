@@ -23,23 +23,23 @@ public class ChangeLogLevelCommand extends Command {
             for (Level level : Level.values()) {
                 if (level.getLevel() == intLevel) {
                     newLevel = level;
-                    Logger.setLogLevel(level);
+                    Logger.getRootLogger().setLogLevel(level);
                     return;
                 }
             }
-            Logger.warning("Level " + intLevel + " does not exist!");
+            Logger.getRootLogger().warning("Level " + intLevel + " does not exist!");
         } catch (NumberFormatException e) {
             for (Level level : Level.values()) {
                 if (level.toString().equals(args[0])) {
                     newLevel = level;
-                    Logger.setLogLevel(level);
+                    Logger.getRootLogger().setLogLevel(level);
                     return;
                 }
             }
-            Logger.warning("Level " + args[0] + " does not exist!");
+            Logger.getRootLogger().warning("Level " + args[0] + " does not exist!");
         }
         if (newLevel != null)
-            Logger.info("Changed Log Level to " + newLevel.toString());
+            Logger.getRootLogger().info("Changed Log Level to " + newLevel.toString());
     }
 
     @Override

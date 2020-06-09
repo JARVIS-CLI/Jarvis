@@ -37,7 +37,7 @@ public class Jarvis {
 	 * @param args currently unused
 	 */
 	public static void main(String[] args) {
-		Logger.log(Level.INFO, "Starting Jarvis v" + VERSION);
+		Logger.getRootLogger().log(Level.INFO, "Starting Jarvis v" + VERSION);
 		eventHandlers = new ArrayList<JarvisEventHandler>();
 		ModuleHandler.init();
 	}

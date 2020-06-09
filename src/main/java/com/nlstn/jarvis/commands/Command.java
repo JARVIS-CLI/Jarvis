@@ -37,7 +37,7 @@ public abstract class Command implements Runnable, Cloneable {
 	public final void run() {
 		if (!validateArguments()) {
 			raiseEvent(new CommandFailedEvent(this, "Invalid Arguments"));
-			Logger.info("Invalid arguments for command " + name);
+			Logger.getRootLogger().info("Invalid arguments for command " + name);
 		} else {
 			raiseEvent(new CommandStartedEvent(this));
 			execute();
@@ -93,7 +93,7 @@ public abstract class Command implements Runnable, Cloneable {
 				new InputStreamReader(Command.class.getResourceAsStream(path)))) {
 			shortDescription = reader.readLine();
 		} catch (Exception e) {
-			Logger.error("Failed to load CommandInfoFile " + path, e);
+			Logger.getRootLogger().error("Failed to load CommandInfoFile " + path, e);
 		}
 	}
 }

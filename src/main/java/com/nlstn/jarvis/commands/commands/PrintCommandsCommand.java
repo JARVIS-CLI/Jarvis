@@ -20,7 +20,7 @@ public class PrintCommandsCommand extends Command {
         List<Command> commands = ModuleHandler.getCommandModule().getLoadedCommands();
 
         for (Command command : commands) {
-            Logger.info(command.toString());
+            Logger.getRootLogger().info(command.toString());
         }
     }
 

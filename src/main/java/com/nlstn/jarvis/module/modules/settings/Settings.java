@@ -59,7 +59,7 @@ public class Settings {
 	public void loadFromFile(String path, String reloadKey) {
 		File file = new File(path);
 		if (!file.exists()) {
-			Logger.error("Settings file does not exist!");
+			Logger.getRootLogger().error("Settings file does not exist!");
 			return;
 		}
 		try {
@@ -72,7 +72,7 @@ public class Settings {
 					continue;
 				String[] split = line.split("=");
 				if (split.length != 2) {
-					Logger.error("Malformed settings line: " + line);
+					Logger.getRootLogger().error("Malformed settings line: " + line);
 					continue;
 				}
 				if (reloadKey != null && split[0].equals(reloadKey))
@@ -80,12 +80,13 @@ public class Settings {
 				Optional<Setting> optSetting = getSetting(split[0]);
 				optSetting.ifPresent(setting -> {
 					setting.setValue(split[1]);
-					Logger.trace("Found setting " + setting.getKey() + " with value " + setting.getValue());
+					Logger.getRootLogger()
+							.trace("Found setting " + setting.getKey() + " with value " + setting.getValue());
 				});
 			}
 			reader.close();
 		} catch (IOException e) {
-			Logger.error("Failed to load settings!", e);
+			Logger.getRootLogger().error("Failed to load settings!", e);
 		}
 		for (Setting setting : settings) {
 			if (setting.getValue() == null)
@@ -107,7 +108,7 @@ public class Settings {
 		try {
 			Files.write(path, builder.toString().getBytes());
 		} catch (IOException e) {
-			Logger.error("Failed to store settings", e);
+			Logger.getRootLogger().error("Failed to store settings", e);
 		}
 	}
 }

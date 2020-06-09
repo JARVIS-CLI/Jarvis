@@ -26,12 +26,12 @@ public class SettingsModule extends Module {
 		settingsPath = Jarvis.PATH + "/settings.opt";
 		File settingsFile = new File(settingsPath);
 		if (!settingsFile.canRead()) {
-			Logger.trace("Cannot read SettingsFile " + settingsPath);
+			Logger.getRootLogger().trace("Cannot read SettingsFile " + settingsPath);
 			try {
 				settingsFile.getParentFile().mkdirs();
 				settingsFile.createNewFile();
 			} catch (IOException e) {
-				Logger.error("Failed to create settings file!", e);
+				Logger.getRootLogger().error("Failed to create settings file!", e);
 			}
 			// Set defaults
 			settings.reset();

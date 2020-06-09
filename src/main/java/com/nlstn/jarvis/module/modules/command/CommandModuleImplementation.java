@@ -38,9 +38,9 @@ public class CommandModuleImplementation implements Runnable {
 			commandOpt.ifPresent(command -> addToRecentCommands(command));
 			ModuleHandler.getStatisticsModule().addRecord(STATISTICS_KEY_EXECUTE);
 			if (!commandOpt.isPresent())
-				Logger.warning("Command " + split[0] + " not found!");
+				Logger.getRootLogger().warning("Command " + split[0] + " not found!");
 		}
-		Logger.trace("Exited CommandModuleImplementation Loop");
+		Logger.getRootLogger().trace("Exited CommandModuleImplementation Loop");
 		scanner.close();
 	}
 
@@ -53,7 +53,7 @@ public class CommandModuleImplementation implements Runnable {
 		if (commandIdentifier.contains(".")) {
 			String[] commandIdentifierSplit = commandIdentifier.split("\\.");
 			if (commandIdentifierSplit.length != 2) {
-				Logger.warning("Invalid command format! Multiple domains found");
+				Logger.getRootLogger().warning("Invalid command format! Multiple domains found");
 				return commandMatch;
 			}
 			CommandDomain domain = CommandDomain.getByString(commandIdentifierSplit[0]);
@@ -64,14 +64,15 @@ public class CommandModuleImplementation implements Runnable {
 			List<Object> matchingCommands = Arrays
 					.asList(commands.stream().filter(command -> command.hasIdentifier(commandIdentifier)).toArray());
 			if (matchingCommands.size() == 0) {
-				Logger.warning("Command " + commandIdentifier + " not found");
+				Logger.getRootLogger().warning("Command " + commandIdentifier + " not found");
 			} else if (matchingCommands.size() == 1) {
 				commandMatch = Optional.of((Command) matchingCommands.get(0));
 			} else {
-				Logger.info("Multiple commands found:");
+				Logger.getRootLogger().info("Multiple commands found:");
 				for (Object object : matchingCommands) {
 					Command currentCommand = (Command) object;
-					Logger.info(currentCommand.getDomain().toString() + "." + currentCommand.getCommands()[0]);
+					Logger.getRootLogger()
+							.info(currentCommand.getDomain().toString() + "." + currentCommand.getCommands()[0]);
 				}
 
 			}
@@ -92,7 +93,7 @@ public class CommandModuleImplementation implements Runnable {
 	}
 
 	public void shutdown() {
-		Logger.trace("Shutting down CommandModuleImplementation");
+		Logger.getRootLogger().trace("Shutting down CommandModuleImplementation");
 		running = false;
 	}
 

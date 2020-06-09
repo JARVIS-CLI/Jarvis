@@ -10,7 +10,7 @@ public class LoggingModule extends Module {
 
     @Override
     public void preInit() {
-
+        Logger.initRootLogger();
     }
 
     @Override

@@ -13,7 +13,7 @@ public class SaveSettingsCommand extends Command {
 
 	@Override
 	public void execute() {
-		Logger.info("Saving settings");
+		Logger.getRootLogger().info("Saving settings");
 		ModuleHandler.getSettingsModule().save();
 	}
 

@@ -27,7 +27,7 @@ public final class Worker implements Runnable {
             raiseEvent(new WorkerFinishedEvent(this));
         } catch (Exception e) {
             raiseEvent(new WorkerFailedEvent(this, e));
-            Logger.error("Worker failed to execute it's task", e);
+            Logger.getRootLogger().error("Worker failed to execute it's task", e);
         }
     }
 

@@ -34,7 +34,7 @@ public class CommandModule extends Module {
 
 	@Override
 	public void preInit() {
-		Logger.trace("Loading commands");
+		Logger.getRootLogger().trace("Loading commands");
 		commands = new ArrayList<Command>();
 
 		commands.add(new ShutdownCommand());
@@ -53,7 +53,7 @@ public class CommandModule extends Module {
 		commands.add(new PrintStatisticCommand());
 		commands.add(new PrintCommandsCommand());
 
-		Logger.trace("Finished loading commands");
+		Logger.getRootLogger().trace("Finished loading commands");
 	}
 
 	@Override

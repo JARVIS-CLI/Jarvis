@@ -18,14 +18,14 @@ public class PrintSettingCommand extends Command {
 		if (args.length == 0 || args[0].equals("all")) {
 			List<Setting> settings = ModuleHandler.getSettingsModule().getSettings();
 			for (Setting setting : settings) {
-				Logger.info("Setting " + setting.getKey() + " has value " + setting.getValue());
+				Logger.getRootLogger().info("Setting " + setting.getKey() + " has value " + setting.getValue());
 			}
 		} else {
 			String value = ModuleHandler.getSettingsModule().getSetting(args[0]);
 			if (value == null)
-				Logger.info("Setting not found!");
+				Logger.getRootLogger().info("Setting not found!");
 			else
-				Logger.info("Setting " + args[0] + " has value " + value);
+				Logger.getRootLogger().info("Setting " + args[0] + " has value " + value);
 		}
 	}
 

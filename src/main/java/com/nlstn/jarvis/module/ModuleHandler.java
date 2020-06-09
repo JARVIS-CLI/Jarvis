@@ -23,7 +23,7 @@ public final class ModuleHandler {
 	}
 
 	public static void init() {
-		Logger.info("Initializing modules");
+		Logger.getRootLogger().info("Initializing modules");
 		loggingModule = new LoggingModule();
 		settingsModule = new SettingsModule();
 		commandModule = new CommandModule();
@@ -33,72 +33,72 @@ public final class ModuleHandler {
 		mediaModule = new MediaModule();
 
 		// Preinit
-		Logger.debug("Preinitializing Statistics Module");
+		Logger.getRootLogger().debug("Preinitializing Statistics Module");
 		statisticsModule.preInit();
 
-		Logger.debug("Preinitializing Logging Module");
+		Logger.getRootLogger().debug("Preinitializing Logging Module");
 		loggingModule.preInit();
 
-		Logger.debug("Preinitializing Worker Module");
+		Logger.getRootLogger().debug("Preinitializing Worker Module");
 		workerModule.preInit();
 
-		Logger.debug("Preinitializing Settings Module");
+		Logger.getRootLogger().debug("Preinitializing Settings Module");
 		settingsModule.preInit();
 
-		Logger.debug("Preinitializing Command Module");
+		Logger.getRootLogger().debug("Preinitializing Command Module");
 		commandModule.preInit();
 
-		Logger.debug("Preinitializing Job Module");
+		Logger.getRootLogger().debug("Preinitializing Job Module");
 		jobModule.preInit();
 
-		Logger.debug("Preinitializing Media Module");
+		Logger.getRootLogger().debug("Preinitializing Media Module");
 		mediaModule.preInit();
 
 		// Init
-		Logger.debug("Initializing Statistics Module");
+		Logger.getRootLogger().debug("Initializing Statistics Module");
 		statisticsModule.init();
 
-		Logger.debug("Initializing Logging Module");
+		Logger.getRootLogger().debug("Initializing Logging Module");
 		commandModule.init();
 
-		Logger.debug("Initializing Worker Module");
+		Logger.getRootLogger().debug("Initializing Worker Module");
 		workerModule.init();
 
-		Logger.debug("Initializing Settings Module");
+		Logger.getRootLogger().debug("Initializing Settings Module");
 		settingsModule.init();
 
-		Logger.debug("Initializing Command Module");
+		Logger.getRootLogger().debug("Initializing Command Module");
 		commandModule.init();
 
-		Logger.debug("Initializing Job Module");
+		Logger.getRootLogger().debug("Initializing Job Module");
 		jobModule.init();
 
-		Logger.debug("Initializing Media Module");
+		Logger.getRootLogger().debug("Initializing Media Module");
 		mediaModule.init();
 
 		// PostInit
-		Logger.debug("Postinitializing Statistics Module");
+		Logger.getRootLogger().debug("Postinitializing Statistics Module");
 		statisticsModule.postInit();
 
-		Logger.debug("Postinitializing Logging Module");
+		Logger.getRootLogger().debug("Postinitializing Logging Module");
 		loggingModule.postInit();
 
-		Logger.debug("Postinitializing Worker Module");
+		Logger.getRootLogger().debug("Postinitializing Worker Module");
 		workerModule.postInit();
 
-		Logger.debug("Postinitializing Settings Module");
+		Logger.getRootLogger().debug("Postinitializing Settings Module");
 		settingsModule.postInit();
 
-		Logger.debug("Postinitializing Command Module");
+		Logger.getRootLogger().debug("Postinitializing Command Module");
 		commandModule.postInit();
 
-		Logger.debug("Postinitializing Job Module");
+		Logger.getRootLogger().debug("Postinitializing Job Module");
 		jobModule.postInit();
 
-		Logger.debug("Postinitializing Media Module");
+		Logger.getRootLogger().debug("Postinitializing Media Module");
 		mediaModule.postInit();
 
-		Logger.info("Finished initializing modules");
+		Logger.getRootLogger().info("Finished initializing modules");
 	}
 
 	public static LoggingModule getLoggingModule() {

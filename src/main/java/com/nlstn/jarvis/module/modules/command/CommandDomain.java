@@ -10,7 +10,7 @@ public enum CommandDomain {
             if (domain.toString().equalsIgnoreCase(domainString))
                 return domain;
         }
-        Logger.debug("Unknown domain requested by string: " + domainString);
+        Logger.getRootLogger().debug("Unknown domain requested by string: " + domainString);
         return null;
     }
 }

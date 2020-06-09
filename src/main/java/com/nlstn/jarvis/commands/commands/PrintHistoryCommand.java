@@ -24,7 +24,7 @@ public class PrintHistoryCommand extends Command {
         ListIterator<Command> iterator = recentCommands.listIterator(recentCommands.size());
 
         while (iterator.hasPrevious())
-            Logger.info(iterator.previous().getName());
+            Logger.getRootLogger().info(iterator.previous().getName());
     }
 
     @Override

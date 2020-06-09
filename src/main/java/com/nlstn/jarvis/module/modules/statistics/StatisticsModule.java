@@ -30,9 +30,9 @@ public class StatisticsModule extends Module {
             try {
                 properties.load(new BufferedInputStream(new FileInputStream(file)));
             } catch (FileNotFoundException e) {
-                Logger.error("Failed to load statistics", e);
+                Logger.getRootLogger().error("Failed to load statistics", e);
             } catch (IOException e) {
-                Logger.error("Failed to load statistics", e);
+                Logger.getRootLogger().error("Failed to load statistics", e);
             }
         }
         Jarvis.addEventHandler((e) -> {
@@ -73,9 +73,9 @@ public class StatisticsModule extends Module {
 
             stream.close();
         } catch (FileNotFoundException e) {
-            Logger.error("FileNotFoundException while saving statistics!", e);
+            Logger.getRootLogger().error("FileNotFoundException while saving statistics!", e);
         } catch (IOException e) {
-            Logger.error("IOException while saving statistics!", e);
+            Logger.getRootLogger().error("IOException while saving statistics!", e);
         }
     }
 

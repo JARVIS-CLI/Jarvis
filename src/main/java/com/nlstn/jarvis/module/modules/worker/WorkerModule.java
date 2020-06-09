@@ -40,9 +40,9 @@ public class WorkerModule extends Module {
 	}
 
 	public void submitWorker(Worker worker) {
-		Logger.trace("Submitted new Runnable");
+		Logger.getRootLogger().trace("Submitted new Runnable");
 		if (service == null) {
-			Logger.error("Worker Module has not been initialized yet!");
+			Logger.getRootLogger().error("Worker Module has not been initialized yet!");
 			return;
 		}
 		ModuleHandler.getStatisticsModule().addRecord(STATISTICS_KEY_SUBMIT);

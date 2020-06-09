@@ -27,7 +27,7 @@ class JobDispatcher implements Runnable, JobEventHandler {
     public void run() {
         while (running) {
             for (Job job : activeJobs) {
-                Logger.trace("Job " + job.getId() + ", state: " + job.getStatus().toString());
+                Logger.getRootLogger().trace("Job " + job.getId() + ", state: " + job.getStatus().toString());
                 if (job.getStatus() == JobStatus.PLANNED && job.isReady()) {
                     job.execute();
                     ModuleHandler.getStatisticsModule().addRecord(STATISTICS_KEY_EXECUTE);
@@ -54,7 +54,7 @@ class JobDispatcher implements Runnable, JobEventHandler {
         if (e instanceof JobFinishedEvent) {
             activeJobs.remove(e.getJob());
         } else if (e instanceof JobFailedEvent) {
-            Logger.info("Job " + e.getJob().getId() + " failed!");
+            Logger.getRootLogger().info("Job " + e.getJob().getId() + " failed!");
         }
     }
 

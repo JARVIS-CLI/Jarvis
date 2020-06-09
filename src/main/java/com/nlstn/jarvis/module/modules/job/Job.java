@@ -41,7 +41,7 @@ public abstract class Job implements CommandEventHandler {
 
     public void execute() {
         status = JobStatus.RUNNING;
-        Logger.trace("Submitting job " + id);
+        Logger.getRootLogger().trace("Submitting job " + id);
         ModuleHandler.getWorkerModule().submitRunnable(command);
     }
 

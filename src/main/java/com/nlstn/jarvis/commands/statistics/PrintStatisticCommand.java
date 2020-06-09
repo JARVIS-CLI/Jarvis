@@ -14,7 +14,7 @@ public class PrintStatisticCommand extends Command {
     @Override
     public void execute() {
         int value = ModuleHandler.getStatisticsModule().getStatisticsValue(args[0]);
-        Logger.info("Statistic: " + args[0] + ", Value: " + value);
+        Logger.getRootLogger().info("Statistic: " + args[0] + ", Value: " + value);
     }
 
     @Override
