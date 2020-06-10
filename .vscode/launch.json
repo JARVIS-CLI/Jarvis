@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Debug (Launch)-Jarvis<jarvis>",
             "request": "launch",
-            "mainClass": "com.nlstn.jarvis.Jarvis",
+            "mainClass": "com.jarvis.Jarvis",
             "projectName": "jarvis"
         }
     ]
