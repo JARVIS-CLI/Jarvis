@@ -4,10 +4,6 @@ import com.jarvis.module.Module;
 
 public class LoggingModule extends Module {
 
-    public LoggingModule() {
-        super();
-    }
-
     @Override
     public void preInit() {
     }

@@ -9,4 +9,8 @@ public class LogMethodFactory {
         return System.out::println;
     }
 
+    public static LogMethod createFileMethod(String path) {
+        return new FileLogMethod(path);
+    }
+
 }
