@@ -13,12 +13,14 @@ import com.jarvis.module.modules.command.events.CommandFailedEvent;
 import com.jarvis.module.modules.command.events.CommandFinishedEvent;
 import com.jarvis.module.modules.command.events.CommandStartedEvent;
 import com.jarvis.module.modules.logging.Logger;
+import com.jarvis.module.modules.logging.methods.LogMethodFactory;
 
 public abstract class Command implements Runnable, Cloneable {
 
 	private String name;
 	private CommandDomain domain;
 	private List<String> commands;
+	protected Logger logger;
 
 	private String shortDescription;
 
@@ -32,6 +34,8 @@ public abstract class Command implements Runnable, Cloneable {
 		this.commands = Arrays.asList(commands);
 		loadCommandInfoFile();
 		eventHandlers = new ArrayList<>();
+		logger = new Logger();
+		logger.addMethod(LogMethodFactory.createStdOutMethod());
 	}
 
 	public final void run() {

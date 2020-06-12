@@ -5,7 +5,6 @@ import java.util.List;
 import com.jarvis.commands.Command;
 import com.jarvis.module.ModuleHandler;
 import com.jarvis.module.modules.command.CommandDomain;
-import com.jarvis.module.modules.logging.Logger;
 
 /**
  * The {@code PrintCommandsCommand} prints all available commands.
@@ -20,7 +19,7 @@ public class PrintCommandsCommand extends Command {
         List<Command> commands = ModuleHandler.getCommandModule().getLoadedCommands();
 
         for (Command command : commands) {
-            Logger.getRootLogger().info(command.toString());
+            logger.info(command.toString());
         }
     }
 

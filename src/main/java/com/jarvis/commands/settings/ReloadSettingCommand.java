@@ -3,7 +3,6 @@ package com.jarvis.commands.settings;
 import com.jarvis.commands.Command;
 import com.jarvis.module.ModuleHandler;
 import com.jarvis.module.modules.command.CommandDomain;
-import com.jarvis.module.modules.logging.Logger;
 
 public class ReloadSettingCommand extends Command {
 
@@ -14,10 +13,10 @@ public class ReloadSettingCommand extends Command {
 	@Override
 	public void execute() {
 		if (args.length == 0) {
-			Logger.getRootLogger().info("Reloading all settings from file");
+			logger.info("Reloading all settings from file");
 			ModuleHandler.getSettingsModule().reload();
 		} else {
-			Logger.getRootLogger().info("Reloading setting " + args[0] + " from file");
+			logger.info("Reloading setting " + args[0] + " from file");
 			ModuleHandler.getSettingsModule().reload(args[0]);
 		}
 	}

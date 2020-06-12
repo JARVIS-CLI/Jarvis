@@ -3,7 +3,6 @@ package com.jarvis.commands.statistics;
 import com.jarvis.commands.Command;
 import com.jarvis.module.ModuleHandler;
 import com.jarvis.module.modules.command.CommandDomain;
-import com.jarvis.module.modules.logging.Logger;
 
 public class PrintStatisticCommand extends Command {
 
@@ -14,7 +13,7 @@ public class PrintStatisticCommand extends Command {
     @Override
     public void execute() {
         int value = ModuleHandler.getStatisticsModule().getStatisticsValue(args[0]);
-        Logger.getRootLogger().info("Statistic: " + args[0] + ", Value: " + value);
+        logger.info("Statistic: " + args[0] + ", Value: " + value);
     }
 
     @Override

@@ -14,10 +14,10 @@ public class ResetSettingCommand extends Command {
 	@Override
 	public void execute() {
 		if (args.length == 0) {
-			Logger.getRootLogger().info("Resetting all settings to default value");
+			logger.info("Resetting all settings to default value");
 			ModuleHandler.getSettingsModule().reset();
 		} else {
-			Logger.getRootLogger().info("Resetting setting " + args[0] + " to default");
+			logger.info("Resetting setting " + args[0] + " to default");
 			boolean success = ModuleHandler.getSettingsModule().reset(args[0]);
 			if (!success)
 				Logger.getRootLogger().info("Setting " + args[0] + " was not found!");

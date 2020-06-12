@@ -5,7 +5,6 @@ import java.util.List;
 import com.jarvis.commands.Command;
 import com.jarvis.module.ModuleHandler;
 import com.jarvis.module.modules.command.CommandDomain;
-import com.jarvis.module.modules.logging.Logger;
 import com.jarvis.module.modules.settings.Setting;
 
 public class PrintSettingCommand extends Command {
@@ -18,14 +17,14 @@ public class PrintSettingCommand extends Command {
 		if (args.length == 0 || args[0].equals("all")) {
 			List<Setting> settings = ModuleHandler.getSettingsModule().getSettings();
 			for (Setting setting : settings) {
-				Logger.getRootLogger().info("Setting " + setting.getKey() + " has value " + setting.getValue());
+				logger.info("Setting " + setting.getKey() + " has value " + setting.getValue());
 			}
 		} else {
 			String value = ModuleHandler.getSettingsModule().getSetting(args[0]);
 			if (value == null)
-				Logger.getRootLogger().info("Setting not found!");
+				logger.info("Setting not found!");
 			else
-				Logger.getRootLogger().info("Setting " + args[0] + " has value " + value);
+				logger.info("Setting " + args[0] + " has value " + value);
 		}
 	}
 

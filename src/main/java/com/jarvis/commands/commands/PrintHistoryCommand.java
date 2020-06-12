@@ -6,7 +6,6 @@ import java.util.ListIterator;
 import com.jarvis.commands.Command;
 import com.jarvis.module.ModuleHandler;
 import com.jarvis.module.modules.command.CommandDomain;
-import com.jarvis.module.modules.logging.Logger;
 
 /**
  * The {@code PrintHistoryCommand} prints the last used commands. It has no
@@ -24,7 +23,7 @@ public class PrintHistoryCommand extends Command {
         ListIterator<Command> iterator = recentCommands.listIterator(recentCommands.size());
 
         while (iterator.hasPrevious())
-            Logger.getRootLogger().info(iterator.previous().getName());
+        logger.info(iterator.previous().getName());
     }
 
     @Override
