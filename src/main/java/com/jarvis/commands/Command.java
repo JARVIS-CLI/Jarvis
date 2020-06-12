@@ -20,6 +20,7 @@ public abstract class Command implements Runnable, Cloneable {
 	private String name;
 	private CommandDomain domain;
 	private List<String> commands;
+	protected boolean isBackground;
 	protected Logger logger;
 
 	private String shortDescription;
@@ -34,8 +35,6 @@ public abstract class Command implements Runnable, Cloneable {
 		this.commands = Arrays.asList(commands);
 		loadCommandInfoFile();
 		eventHandlers = new ArrayList<>();
-		logger = new Logger();
-		logger.addMethod(LogMethodFactory.createStdOutMethod());
 	}
 
 	public final void run() {
@@ -44,10 +43,14 @@ public abstract class Command implements Runnable, Cloneable {
 			Logger.getRootLogger().info("Invalid arguments for command " + name);
 		} else {
 			raiseEvent(new CommandStartedEvent(this));
+			logger = new Logger();
+			if (!isBackground)
+				logger.addMethod(LogMethodFactory.createStdOutMethod());
 			execute();
 			raiseEvent(new CommandFinishedEvent(this));
 		}
 		args = null;
+		setBackground(false);
 	}
 
 	public abstract void execute();
@@ -76,6 +79,14 @@ public abstract class Command implements Runnable, Cloneable {
 
 	public String getShortDescription() {
 		return shortDescription;
+	}
+
+	public boolean isBackground() {
+		return isBackground;
+	}
+
+	public void setBackground(boolean isBackground) {
+		this.isBackground = isBackground;
 	}
 
 	public void raiseEvent(CommandEvent e) {

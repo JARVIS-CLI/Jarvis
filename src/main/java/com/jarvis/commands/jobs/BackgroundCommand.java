@@ -18,7 +18,11 @@ public class BackgroundCommand extends Command {
     @Override
     public void execute() {
         Optional<Command> commandMatch = ModuleHandler.getCommandModule().getCommand(args);
-        commandMatch.ifPresent(command -> ModuleHandler.getJobModule().executeImmediately(command));
+        commandMatch.ifPresent(command -> {
+            command.setBackground(true);
+            ModuleHandler.getJobModule().executeImmediately(command);
+            logger.info("Planned as background job");
+        });
     }
 
     @Override
