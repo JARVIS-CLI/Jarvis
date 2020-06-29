@@ -12,10 +12,24 @@ import com.jarvis.module.modules.logging.Logger;
 
 public class CommandModuleImplementation implements Runnable {
 
+	/**
+	 * The statistics key for counting the executed commands
+	 */
 	private static String STATISTICS_KEY_EXECUTE = "CommandModule.EXECUTE_COMMAND";
 
+	/**
+	 * The list of available commands
+	 */
 	private List<Command> commands;
+
+	/**
+	 * A list of recently executed commands
+	 */
 	private List<Command> recentCommands;
+
+	/**
+	 * Whether this implementation is still running or not
+	 */
 	private volatile boolean running = true;
 
 	public CommandModuleImplementation(List<Command> commands) {
