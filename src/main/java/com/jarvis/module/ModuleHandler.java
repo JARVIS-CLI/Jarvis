@@ -5,6 +5,7 @@ import com.jarvis.module.modules.job.JobModule;
 import com.jarvis.module.modules.logging.Logger;
 import com.jarvis.module.modules.logging.LoggingModule;
 import com.jarvis.module.modules.media.MediaModule;
+import com.jarvis.module.modules.redis.RedisModule;
 import com.jarvis.module.modules.settings.SettingsModule;
 import com.jarvis.module.modules.statistics.StatisticsModule;
 import com.jarvis.module.modules.worker.WorkerModule;
@@ -18,6 +19,7 @@ public final class ModuleHandler {
 	private static JobModule jobModule;
 	private static StatisticsModule statisticsModule;
 	private static MediaModule mediaModule;
+	private static RedisModule redisModule;
 
 	private ModuleHandler() {
 	}
@@ -31,6 +33,7 @@ public final class ModuleHandler {
 		jobModule = new JobModule();
 		statisticsModule = new StatisticsModule();
 		mediaModule = new MediaModule();
+		redisModule = new RedisModule();
 
 		// Preinit
 		Logger.getRootLogger().debug("Preinitializing Statistics Module");
@@ -54,6 +57,9 @@ public final class ModuleHandler {
 		Logger.getRootLogger().debug("Preinitializing Media Module");
 		mediaModule.preInit();
 
+		Logger.getRootLogger().debug("Preinitializing Redis Module");
+		redisModule.preInit();
+
 		// Init
 		Logger.getRootLogger().debug("Initializing Statistics Module");
 		statisticsModule.init();
@@ -76,6 +82,9 @@ public final class ModuleHandler {
 		Logger.getRootLogger().debug("Initializing Media Module");
 		mediaModule.init();
 
+		Logger.getRootLogger().debug("Initializing Redis Module");
+		redisModule.init();
+
 		// PostInit
 		Logger.getRootLogger().debug("Postinitializing Statistics Module");
 		statisticsModule.postInit();
@@ -97,6 +106,9 @@ public final class ModuleHandler {
 
 		Logger.getRootLogger().debug("Postinitializing Media Module");
 		mediaModule.postInit();
+
+		Logger.getRootLogger().debug("Postinitializing Redis Module");
+		redisModule.postInit();
 
 		Logger.getRootLogger().info("Finished initializing modules");
 	}
@@ -127,6 +139,10 @@ public final class ModuleHandler {
 
 	public static MediaModule getMediaModule() {
 		return mediaModule;
+	}
+
+	public static RedisModule getRedisModule() {
+		return redisModule;
 	}
 
 }
